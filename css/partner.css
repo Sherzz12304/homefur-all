@@ -1,0 +1,32 @@
+/* ==========================================================================
+   HomeFur All — partner.css
+   --------------------------------------------------------------------------
+   Pawtner page only. Uses the shared tokens from base.css.
+   1. Hero banner
+   ========================================================================== */
+
+/* ---- 1. Hero banner ---- */
+
+.page-hero {
+    padding: 4.5rem 0;
+    text-align: center;
+}
+.page-hero--coral {
+    background: var(--coral);
+}
+.page-hero--coral .eyebrow {
+    color: #fff;
+}
+.page-hero h1 {
+    margin-bottom: .5em;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: #fff;
+}
+.page-hero p {
+    max-width: 56ch;
+    margin: 0 auto;
+    color: #FCE8E1;
+}
+.page-hero--coral p {
+    color: #FCE8E1;
+}
