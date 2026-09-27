@@ -30,3 +30,39 @@
 .page-hero--coral p {
     color: #FCE8E1;
 }
+/* ---- 2. Why pawtner (benefit cards) ---- */
+
+.page-section {
+  padding: 4rem 0 2rem;
+}
+
+.section-intro {
+  max-width: 52ch;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.info-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.info-card {
+  padding: 1.6rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.info-card h3 {
+  color: var(--coral-deep);
+}
+
+.info-card p {
+  margin: 0;
+  font-size: .9rem;
+}
