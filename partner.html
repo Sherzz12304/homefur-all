@@ -115,6 +115,35 @@
       <div class="form-card">
         <h2>Pawtnership application</h2>
         <p class="form-intro">Tell us about your shelter — our pawtnership team will follow up within a week.</p>
+        <form data-form data-success="Thank you! Our pawtnership team will follow up within 5-7 business days.">
+          <div class="form-grid">
+
+            <div class="field field-full">
+              <label for="p-org">Shelter / organization name <span class="req">*</span></label>
+              <input id="p-org" name="organization" type="text" placeholder="ABC Shelter" autocomplete="organization" required>
+            </div>
+            
+            <div class="field">
+              <label for="p-contact">Contact person <span class="req">*</span></label>
+              <input id="p-contact" name="contact" type="text" placeholder="Juan Dela Cruz" autocomplete="name" required>
+            </div>
+
+            <div class="field">
+              <label for="p-role">Role at shelter <span class="req">*</span></label>
+              <input id="p-role" name="role" type="text" placeholder="e.g. Founder, Coordinator" required>
+            </div>
+
+            <div class="field">
+              <label for="p-email">Email <span class="req">*</span></label>
+              <input id="p-email" name="email" type="email" placeholder="jdelacruz@email.com" autocomplete="email" required>
+            </div>
+
+            <div class="field">
+              <label for="p-phone">Phone number <span class="req">*</span></label>
+              <input id="p-phone" name="phone" type="tel" placeholder="09XX XXX XXXX" autocomplete="tel" required>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </section>

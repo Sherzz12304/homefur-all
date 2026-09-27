@@ -114,3 +114,46 @@
 }
 
 .form-intro { margin-bottom: 2rem; }
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem 1.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+}
+
+.field--full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.req { color: var(--coral-deep); }
+
+.field input {
+    width: 100%;
+    padding: .9em 1.1em;
+    background: var(--sand-light);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    font: inherit;
+    font-size: .95rem;
+    color: var(--ink);
+}
+
+.field ::placeholder { color: rgba(35, 38, 32, 0.4); }
+
+.field input:focus {
+    outline: none;
+    border-color: var(--coral);
+    background: #fff;
+}
