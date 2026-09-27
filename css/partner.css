@@ -242,3 +242,31 @@
     margin: 0 0 1.1rem;
     font-size: .95rem;
 }
+
+/* ---- 6. Responsive ---- */
+@media (max-width: 1024px) {
+    .info-grid--4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 860px) {
+    .steps {
+        grid-template-columns: 1fr;
+    }
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .info-grid,
+    .info-grid--4,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+}
