@@ -657,3 +657,26 @@ p {
     .tile-a, .tile-b, .tile-c { aspect-ratio: 16 / 10; }
     .footer-inner { grid-template-columns: 1fr; }
 }
+
+/* ---- 16. Print & reduced motion ---- */
+@media print {
+    .site-header,
+    .nav-toggle,
+    .newsletter {
+        display: none;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .btn {
+        transition: none;
+    }
+}
