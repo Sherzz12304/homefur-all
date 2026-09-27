@@ -4,4 +4,5 @@ const mainNav = document.getElementById('main-nav');
 navToggle.addEventListener('click', () => {
     mainNav.classList.toggle('is-open');
     navToggle.classList.toggle('is-active');
-});
+    document.body.classList.toggle('nav-open');
+})
