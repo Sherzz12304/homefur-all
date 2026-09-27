@@ -157,3 +157,27 @@
     border-color: var(--coral);
     background: #fff;
 }
+
+.optional {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.field textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: .9em 1.1em;
+  background: var(--sand-light);
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  font: inherit;
+  font-size: .95rem;
+  color: var(--ink);
+  resize: vertical;
+}
+
+.field textarea:focus {
+  outline: none;
+  border-color: var(--coral);
+  background: #fff;
+}

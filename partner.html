@@ -118,7 +118,7 @@
         <form data-form data-success="Thank you! Our pawtnership team will follow up within 5-7 business days.">
           <div class="form-grid">
 
-            <div class="field field-full">
+            <div class="field field--full">
               <label for="p-org">Shelter / organization name <span class="req">*</span></label>
               <input id="p-org" name="organization" type="text" placeholder="ABC Shelter" autocomplete="organization" required>
             </div>
@@ -141,6 +141,26 @@
             <div class="field">
               <label for="p-phone">Phone number <span class="req">*</span></label>
               <input id="p-phone" name="phone" type="tel" placeholder="09XX XXX XXXX" autocomplete="tel" required>
+            </div>
+
+            <div class="field field--full">
+              <label for="p-address">Shelter address / region <span class="req">*</span></label>
+              <input id="p-address" name="address" type="text" placeholder="City, region" autocomplete="street-address" required>
+            </div>
+
+            <div class="field">
+              <label for="p-animals">Animals currently in care <span class="req">*</span></label>
+              <input id="p-animals" name="animals" type="number" min="0" placeholder="e.g. 24" required>
+            </div>
+
+            <div class="field">
+              <label for="p-web">Website / social media <span class="optional">(optional)</span></label>
+              <input id="p-web" name="website" type="text" placeholder="Facebook, Instagram, etc.">
+            </div>
+
+            <div class="field field--full">
+              <label for="p-why">Why would you like to pawtner with HomeFur All? <span class="req">*</span></label>
+              <textarea id="p-why" name="why" placeholder="Tell us a bit about your shelter and what you're hoping for..." required></textarea>
             </div>
           </div>
         </form>
