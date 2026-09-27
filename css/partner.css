@@ -202,3 +202,43 @@
     font-weight: 600;
     color: var(--moss);
 }
+
+/* ---- 5. FAQ accordion ---- */
+.page-section--last {
+    padding-bottom: 5rem;
+}
+
+.faq {
+    max-width: 820px;
+    margin: 1.5rem auto 0;
+}
+
+.faq-item { border-bottom: 1px solid var(--line); }
+
+.faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    color: var(--coral-deep);
+}
+
+.faq-item[open] summary::after { content: "\2212"; }
+
+.faq-item p {
+    margin: 0 0 1.1rem;
+    font-size: .95rem;
+}
