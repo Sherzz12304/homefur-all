@@ -23,8 +23,8 @@ A directory website connecting local animal shelters in Angeles City and Mabalac
 └── *.html
 
 ## Status
-- [ ] Landing page
-- [ ] Pawtner page
+- [x] Landing page
+- [x] Pawtner page
 - [ ] Volunteer page
 - [ ] Shelters page
 - [ ] Adopt page
