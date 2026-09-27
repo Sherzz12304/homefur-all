@@ -181,3 +181,24 @@
   border-color: var(--coral);
   background: #fff;
 }
+
+.form-actions {
+    margin-top: 1.8rem;
+    text-align: center;
+}
+
+.form-actions .btn {
+    width: min(100%, 380px);
+    padding: 1.05em 2em;
+}
+
+.form-note {
+    margin: .8rem 0 0;
+    font-size: .9rem
+}
+
+.form-status {
+    margin: 1rem 0 0;
+    font-weight: 600;
+    color: var(--moss);
+}
