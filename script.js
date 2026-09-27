@@ -16,6 +16,7 @@ navToggle.addEventListener('click', () => {
     document.body.classList.toggle('nav-open');
 });
 
+// Close the menu automatically when a link inside it is tapped
 mainNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         mainNav.classList.remove('is-open');
@@ -24,6 +25,7 @@ mainNav.querySelectorAll('a').forEach(link => {
     });
 });
 
+// Close the menu when the Escape key is pressed (keyboard accessibility)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         mainNav.classList.remove('is-open');
