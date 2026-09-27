@@ -1,10 +1,12 @@
 /* ==========================================================================
    HomeFur All — script.js
    --------------------------------------------------------------------------
-   Mobile menu: hamburger toggle, close on link click, close on Escape.
+   1. Mobile menu: hamburger toggle, close on link click, close on Escape.
+   2. Forms: fake-submit handling (no backend — shows a thank-you message).
    ========================================================================== */
 
 
+/* ---- 1. Mobile menu ---- */
 // Grab the hamburger button and the nav menu it controls
 const navToggle = document.getElementById('nav-toggle');
 const mainNav = document.getElementById('main-nav');
@@ -32,4 +34,16 @@ document.addEventListener('keydown', (e) => {
         navToggle.classList.remove('is-active');
         document.body.classList.remove('nav-open');
     }
+});
+
+/* ---- 2. Forms ---- */
+document.querySelectorAll('form[data-form]').forEach(form => {
+  const status = form.querySelector('.form-status');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.reset();
+    status.hidden = false;
+    status.textContent = form.dataset.success;
+  });
 });
