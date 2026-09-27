@@ -14,13 +14,15 @@ A directory website connecting local animal shelters in Angeles City and Mabalac
 - No frameworks or backend — fully static/client-side
 
 ## Structure
-├── css/
-│   ├── base.css      — shared styles (header, footer, buttons, tokens)
-│   ├── pages.css      — landing page styles
-│   └── partner.css    — pawtner page styles
-├── images/
-├── script.js           — mobile menu + form handling
-└── *.html
+```
+css/
+├── base.css      — shared styles (header, footer, buttons, tokens)
+├── pages.css     — landing page styles
+└── partner.css   — pawtner page styles
+images/
+script.js         — mobile menu + form handling
+*.html
+```
 
 ## Status
 - [x] Landing page
