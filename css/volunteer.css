@@ -1,0 +1,38 @@
+/* ==========================================================================
+   HomeFur All — volunteer.css
+   --------------------------------------------------------------------------
+   Volunteer page only. Loads after base.css and form-pages.css.
+   1. Before you sign up (facts panel)
+   2. Responsive
+   ========================================================================== */
+
+/* ---- 1. Before you sign up (facts panel) ---- */
+.facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+.fact .eyebrow {
+    margin-bottom: .4em;
+}
+.fact strong {
+    display: block;
+    margin-bottom: .3rem;
+    color: var(--ink);
+}
+.fact-note {
+    margin: 0;
+    font-size: .82rem;
+}
+
+/* ---- 2. Responsive ---- */
+@media (max-width: 860px) {
+    .facts {
+        grid-template-columns: 1fr;
+    }
+}
