@@ -38,12 +38,27 @@ document.addEventListener('keydown', (e) => {
 
 /* ---- 2. Forms ---- */
 document.querySelectorAll('form[data-form]').forEach(form => {
-  const status = form.querySelector('.form-status');
+    const status = form.querySelector('.form-status');
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    form.reset();
-    status.hidden = false;
-    status.textContent = form.dataset.success;
-  });
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Checkbox groups marked data-require-one need at least one box ticked
+        let valid = true;
+        form.querySelectorAll('[data-require-one]').forEach(group => {
+            const anyChecked = group.querySelector('input:checked') !== null;
+            group.querySelector('.form-error').hidden = anyChecked;
+
+            // Send the cursor to the first group that failed
+            if (!anyChecked && valid) {
+                group.querySelector('input').focus();
+                valid = false;
+            }
+        });
+        if (!valid) return;
+
+        form.reset();
+        status.hidden = false;
+        status.textContent = form.dataset.success;
+    });
 });
