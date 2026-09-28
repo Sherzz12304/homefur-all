@@ -48,7 +48,47 @@
     background: #fff;
 }
 
-/* ---- 3. Responsive ---- */
+/* ---- 3. Checkbox groups (availability, areas of interest) ---- */
+.check-group {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: .6rem 1.2rem 1.2rem;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+}
+.check-group legend {
+    padding: 0 .5rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+.check-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem 1.6rem;
+}
+.check {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+}
+.check input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--moss);
+}
+.form-error {
+    margin: .5rem 0 0;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--coral-deep);
+}
+
+/* ---- 4. Responsive ---- */
 @media (max-width: 860px) {
     .facts {
         grid-template-columns: 1fr;

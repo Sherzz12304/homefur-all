@@ -146,6 +146,35 @@
                                 <!-- Add the real Angeles City / Mabalacat shelters here once the list is final -->
                             </select>
                         </div>
+
+                        <fieldset class="check-group" data-require-one>
+                            <legend>Availability <span class="req">*</span></legend>
+                            <div class="check-list">
+                                <label class="check"><input type="checkbox" name="availability" value="Weekday mornings"> Weekday mornings</label>
+                                <label class="check"><input type="checkbox" name="availability" value="Weekday afternoons"> Weekday afternoons</label>
+                                <label class="check"><input type="checkbox" name="availability" value="Weekends"> Weekends</label>
+                                <label class="check"><input type="checkbox" name="availability" value="Evenings"> Evenings</label>
+                            </div>
+                            <p class="form-error" hidden>Pick at least one time that works for you.</p>
+                        </fieldset>
+
+                        <fieldset class="check-group" data-require-one>
+                            <legend>Area of interest <span class="req">*</span></legend>
+                            <div class="check-list">
+                                <label class="check"><input type="checkbox" name="interest" value="Shelter care"> Shelter care</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Events &amp; fundraising"> Events &amp; fundraising</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Transport"> Transport</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Admin &amp; social media"> Admin &amp; social media</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Foster-to-adopt support"> Foster-to-adopt support</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Vet-day helper"> Vet-day helper</label>
+                            </div>
+                            <p class="form-error" hidden>Pick at least one area you'd like to help with.</p>
+                        </fieldset>
+
+                        <div class="field field--full">
+                            <label for="v-about">Tell us about yourself <span class="req">*</span></label>
+                            <textarea id="v-about" name="about" placeholder="Any experience with animals, or why you'd like to volunteer..." required></textarea>
+                        </div>
                     </div>
                 </form>
             </div>
