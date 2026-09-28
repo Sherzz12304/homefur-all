@@ -30,7 +30,25 @@
     font-size: .82rem;
 }
 
-/* ---- 2. Responsive ---- */
+/* ---- 2. Dropwdown (styled to match the text inputs) ---- */
+.field select {
+    width: 100%;
+    padding: .9em 1.1em;
+    background: var(--sand-light);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    font: inherit;
+    font-size: .95rem;
+    color: var(--ink);
+    cursor: pointer;
+}
+.field select:focus {
+    outline: none;
+    border-color: var(--coral);
+    background: #fff;
+}
+
+/* ---- 3. Responsive ---- */
 @media (max-width: 860px) {
     .facts {
         grid-template-columns: 1fr;

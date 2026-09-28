@@ -110,6 +110,47 @@
             </div>
         </div>
     </section>
+
+    <div class="leash-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+            <path d="M0 30 C 200 60, 300 0, 500 30 S 800 60, 1000 20 S 1150 40, 1200 30"
+                stroke="#2C4A3B" stroke-width="3" fill="none"
+                stroke-dasharray="1 14" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <section class="form-section">
+        <div class="wrap">
+            <div class="form-card">
+                <h2>Sign up to volunteer</h2>
+                <p class="form-intro">Tell us a bit about yourself — a shelter coordinator will reach out within a few days.</p>
+
+                <form data-form data-success="Thank you! A shelter coordinator will reach out within 3-5 business days.">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="v-name">Full name <span class="req">*</span></label>
+                            <input id="v-name" name="name" type="text" placeholder="Juan Dela Cruz" autocomplete="name" required> 
+                        </div>
+                        <div class="field">
+                            <label for="v-email">Email <span class="req">*</span></label>
+                            <input id="v-email" name="email" type="email" placeholder="juan@email.com" autocomplete="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="v-phone">Phone number <span class="req">*</span></label>
+                            <input id="v-phone" name="phone" type="tel" placeholder="09XX XXX XXXX" autocomplete="tel" required>
+                        </div>
+                        <div class="field">
+                            <label for="v-shelter">Preferred shelter <span class="req">*</span></label>
+                            <select id="v-shelter" name="shelter" required>
+                                <option>No preference</option>
+                                <!-- Add the real Angeles City / Mabalacat shelters here once the list is final -->
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer class="site-footer">
