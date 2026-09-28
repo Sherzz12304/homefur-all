@@ -1,0 +1,170 @@
+/* ==========================================================================
+   HomeFur All — inner.css
+   --------------------------------------------------------------------------
+   Shared by the Pawtner and Volunteer pages. Loads after base.css.
+   1. Hero banner
+   2. Page sections + info cards
+   3. Forms
+   4. Responsive
+   ========================================================================== */
+
+
+/* ---- 1. Hero banner (green by default; pages can override the color) ---- */
+.page-hero {
+    padding: 4.5rem 0;
+    text-align: center;
+    background: var(--moss);
+}
+.page-hero .eyebrow {
+    color: var(--butter);
+}
+.page-hero h1 {
+    margin-bottom: .5em;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: #fff;
+}
+.page-hero p {
+    max-width: 56ch;
+    margin: 0 auto;
+    color: #E8E2CF;
+}
+
+
+/* ---- 2. Page sections + info cards ---- */
+.page-section {
+    padding: 4rem 0 2rem;
+}
+.page-section--last {
+    padding-bottom: 5rem;
+}
+.section-intro {
+    max-width: 52ch;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.info-card {
+    padding: 1.6rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+.info-card h3 {
+    color: var(--coral-deep);
+}
+.info-card p {
+    margin: 0;
+    font-size: .9rem;
+}
+
+
+/* ---- 3. Forms ---- */
+.form-section {
+    padding: 1rem 0 4rem;
+}
+.form-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+.form-card h2,
+.form-intro {
+    text-align: center;
+}
+.form-intro {
+    margin-bottom: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem 1.5rem;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+}
+.field--full {
+    grid-column: 1 / -1;
+}
+.field label {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+.req {
+    color: var(--coral-deep);
+}
+.optional {
+    font-weight: 400;
+    color: var(--ink-soft);
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: .9em 1.1em;
+    background: var(--sand-light);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    font: inherit;
+    font-size: .95rem;
+    color: var(--ink);
+}
+.field textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+.field ::placeholder {
+    color: rgba(35, 38, 32, 0.4);
+}
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--coral);
+    background: #fff;
+}
+
+.form-actions {
+    margin-top: 1.8rem;
+    text-align: center;
+}
+.form-actions .btn {
+    width: min(100%, 380px);
+    padding: 1.05em 2em;
+}
+.form-note {
+    margin: .8rem 0 0;
+    font-size: .9rem;
+}
+.form-status {
+    margin: 1rem 0 0;
+    font-weight: 600;
+    color: var(--moss);
+}
+
+
+/* ---- 4. Responsive ---- */
+@media (max-width: 860px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .info-grid,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-card {
+        padding: 1.5rem;
+    }
+}
