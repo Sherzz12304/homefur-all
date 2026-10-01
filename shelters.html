@@ -44,6 +44,37 @@
 
 <main>
 
+  <section class="shelters-page">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Our Pawtners</p>
+          <h2>Shelters near you</h2>
+        </div>
+      </div>
+
+      <div class="filter-pills" data-target="#shelter-grid" data-filter-key="province">
+        <button class="pill active" type="button" data-filter="all">All provinces</button>
+        <button class="pill" type="button" data-filter="pampanga">Pampanga</button>
+        <button class="pill" type="button" data-filter="metro-manila">Metro Manila</button>
+      </div>
+
+      <div class="filter-pills" data-target="#shelter-grid" data-filter-key="city">
+        <button class="pill active" type="button" data-filter="all">All cities</button>
+        <button class="pill" type="button" data-filter="angeles">Angeles</button>
+        <button class="pill" type="button" data-filter="mabalacat">Mabalacat</button>
+        <button class="pill" type="button" data-filter="floridablanca">Floridablanca</button>
+        <button class="pill" type="button" data-filter="quezon-city">Quezon City</button>
+        <button class="pill" type="button" data-filter="mandaluyong">Mandaluyong</button>
+        <button class="pill" type="button" data-filter="paranaque">Parañaque</button>
+      </div>
+
+      <div class="shelter-grid" id="shelter-grid">
+        <!-- Shelter cards go here -->
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -75,6 +106,7 @@
   </div>
 </footer>
 
+<script src="shelters-list.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
