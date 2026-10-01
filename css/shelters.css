@@ -1,0 +1,19 @@
+/* ==========================================================================
+   HomeFur All — shelters.css
+   --------------------------------------------------------------------------
+   Shelters page only. Loads after base.css.
+   1. Page layout + filter spacing
+   ========================================================================== */
+
+/* ---- 1. Page layout + filter spacing ---- */
+.shelters-page {
+  padding: 4rem 0 5rem;
+}
+
+.filter-pills {
+  margin-bottom: .8rem;
+}
+
+.filter-pills:last-of-type {
+  margin-bottom: 2.5rem;
+}
