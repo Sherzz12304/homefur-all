@@ -129,3 +129,27 @@ const shelters = [
     maps: 'https://maps.app.goo.gl/RejSaTF6zbscSaVF7'
   }
 ];
+
+function renderShelterCard(shelter) {
+  return `
+    <article class="shelter-card" data-province="${shelter.provinceSlug}" data-city="${shelter.citySlug}">
+      <img src="${shelter.image}" alt="${shelter.name}">
+      <div class="shelter-body">
+        <h3>${shelter.name}</h3>
+        <p class="shelter-loc">${shelter.city} · ${shelter.province}</p>
+        <p>${shelter.description}</p>
+        <div class="shelter-meta">
+          <span>${shelter.contacts.contactNo}</span>
+          <a href="${shelter.maps}" class="link-arrow" target="_blank" rel="noopener">View on map →</a>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderShelters(list) {
+  const grid = document.getElementById('shelter-grid');
+  grid.innerHTML = list.map(renderShelterCard).join('');
+}
+
+renderShelters(shelters);
