@@ -147,6 +147,11 @@ function renderShelterCard(shelter) {
   `;
 }
 
+const cityToProvince = {};
+shelters.forEach(s => {
+  cityToProvince[s.citySlug] = s.provinceSlug;
+});
+
 function renderShelters(list) {
   const grid = document.getElementById('shelter-grid');
   grid.innerHTML = list.map(renderShelterCard).join('');
