@@ -24,7 +24,7 @@ const shelters = [
     province: 'Pampanga', provinceSlug: 'pampanga',
     city: 'Angeles City', citySlug: 'angeles',
     address: 'Doña Donya Aurora St, Angeles, 2009, Pampanga, Philippines',
-    description: 'Short one or two line description.',
+    description: 'A community-focused local rescue effort helping stray animals find immediate foster care and forever homes.',
     image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
     contacts: new Contact('+63 928 783 4482', 'N/A', 'N/A', 'N/A'),
     maps: 'https://maps.app.goo.gl/tyy3qBw4o7aQqw7N7'
@@ -34,27 +34,17 @@ const shelters = [
     province: 'Pampanga', provinceSlug: 'pampanga',
     city: 'Angeles City', citySlug: 'angeles',
     address: '416 Sto. Niño, Angeles, Pampanga',
-    description: 'Short one or two line description.',
+    description: 'An independent sanctuary providing shelter, food, and basic veterinary care to neglected dogs and cats.',
     image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
     contacts: new Contact('N/A', 'N/A', 'https://www.facebook.com/lykasdogandcatshelter', 'N/A'),
     maps: 'https://maps.app.goo.gl/5d5QtEPKtwUB2LBF7'
-  },
-  {
-    name: 'Golden Wolf Loft',
-    province: 'Pampanga', provinceSlug: 'pampanga',
-    city: 'Angeles City', citySlug: 'angeles',
-    address: '5H6X+9CW, De Ocera Ave Sitio Pader, Angeles, 2009 Pampanga',
-    description: 'Short one or two line description.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
-    contacts: new Contact('N/A', 'N/A', 'N/A', 'N/A'),
-    maps: 'https://maps.app.goo.gl/ocN6pMCvU2rb6B4U8'
   },
   {
     name: 'Veterinary Office - Lungsod ng Angeles (Government Office)',
     province: 'Pampanga', provinceSlug: 'pampanga',
     city: 'Angeles City', citySlug: 'angeles',
     address: 'City Hall Building, Aniceto Gueco St, Pulung Maragul, Angeles, 2009 Pampanga',
-    description: 'Short one or two line description.',
+    description: 'The city veterinary office handling local animal control, anti-rabies vaccinations, and adoption programs.',
     image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
     contacts: new Contact('(045) 322 0485', 'N/A', 'N/A', 'N/A'),
     maps: 'https://maps.app.goo.gl/k8Yc6Tz6vSmzr13t6'
@@ -64,7 +54,7 @@ const shelters = [
     province: 'Pampanga', provinceSlug: 'pampanga',
     city: 'Mabalacat City', citySlug: 'mabalacat',
     address: 'Sitio Irung Brgy. Tabun, Mabalacat, Philippines, 2010',
-    description: 'Short one or two line description.',
+    description: 'A compassionate non-profit giving neglected strays a second chance through rehabilitation and adoption drives.',
     image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
     contacts: new Contact('+63 933 824 0324', 'leahibuna@yahoo.com', 'https://facebook.com/Noahsarkdogandcatshelter/', 'N/A'),
     maps: 'https://maps.app.goo.gl/kVgrzfG8qDAjqWNN6'
@@ -74,7 +64,7 @@ const shelters = [
     province: 'Pampanga', provinceSlug: 'pampanga',
     city: 'Floridablanca', citySlug: 'floridablanca',
     address: 'Macapagal, Pabanlag, Floridablanca, 2006 Pampanga',
-    description: 'Short one or two line description.',
+    description: 'A dedicated safe haven providing critical care and socialization to prepare local rescues for adoption.',
     image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
     contacts: new Contact('+63 909 141 4744', 'N/A', 'https://facebook.com/thehowsph/', 'N/A'),
     maps: 'https://maps.app.goo.gl/CZVtZKZLxnX9rrjp6'
@@ -84,7 +74,7 @@ const shelters = [
     province: 'Metro Manila', provinceSlug: 'metro-manila',
     city: 'Quezon City', citySlug: 'quezon-city',
     address: 'Aurora Blvd, Quezon City, 1108 Metro Manila',
-    description: 'Short one or two line description.',
+    description: 'One of the pioneers in Philippine animal welfare, providing extensive behavioral rehabilitation and adoptions.',
     image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
     contacts: new Contact('N/A', 'N/A', 'N/A', 'paws.org.ph'),
     maps: 'https://maps.app.goo.gl/bXzpCwUvgTK2BKoS7'
@@ -94,30 +84,10 @@ const shelters = [
     province: 'Metro Manila', provinceSlug: 'metro-manila',
     city: 'Quezon City', citySlug: 'quezon-city',
     address: 'P485+CMV, Clemente, Quezon City, Metro Manila',
-    description: 'Short one or two line description.',
+    description: 'A progressive local government pound actively promoting responsible pet ownership and street dog adoption.',
     image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
     contacts: new Contact('(02) 8988 4242', 'N/A', 'N/A', 'N/A'),
     maps: 'https://maps.app.goo.gl/CUtc3HpHv9u7J6YV9'
-  },
-  {
-    name: 'Mandaluyong Animal Shelter & Pound',
-    province: 'Metro Manila', provinceSlug: 'metro-manila',
-    city: 'Mandaluyong', citySlug: 'mandaluyong',
-    address: '588 Nueve de Febrero, Mandaluyong City, 1550 Kalakhang Maynila',
-    description: 'Short one or two line description.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
-    contacts: new Contact('N/A', 'N/A', 'N/A', 'N/A'),
-    maps: 'https://maps.app.goo.gl/U4vPAYMH9skr73cy7'
-  },
-  {
-    name: 'Parañaque Animal Control and Adoption Facility (Government Office)',
-    province: 'Metro Manila', provinceSlug: 'metro-manila',
-    city: 'Parañaque', citySlug: 'paranaque',
-    address: 'FXWW+V3J, Parañaque, Metro Manila',
-    description: 'Short one or two line description.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
-    contacts: new Contact('N/A', 'N/A', 'N/A', 'N/A'),
-    maps: 'https://maps.app.goo.gl/RejSaTF6zbscSaVF7'
   }
 ];
 
