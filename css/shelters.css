@@ -17,3 +17,51 @@
 .filter-pills:last-of-type {
   margin-bottom: 2.5rem;
 }
+
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.pager-btn {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  font-size: 1.2rem;
+  font: var(--font-display);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.pager-btn:hover:not(:disabled) {
+  border-color: var(--moss);
+}
+.pager-btn--next {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #fff;
+}
+.pager-btn--next:hover:not(:disabled) {
+  background: var(--coral-deep);
+  border-color: var(--coral-deep);
+}
+.pager-btn:disabled {
+  opacity: .4;
+  cursor: default;
+}
+.pager-status {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ink-soft);
+}
