@@ -75,7 +75,7 @@ const shelters = [
     city: 'Quezon City', citySlug: 'quezon-city',
     address: 'Aurora Blvd, Quezon City, 1108 Metro Manila',
     description: 'One of the pioneers in Philippine animal welfare, providing extensive behavioral rehabilitation and adoptions.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-paws.jpeg',
     contacts: new Contact('N/A', 'N/A', 'N/A', 'paws.org.ph'),
     maps: 'https://maps.app.goo.gl/bXzpCwUvgTK2BKoS7'
   },
@@ -95,7 +95,7 @@ const shelters = [
     city: 'Capas', citySlug: 'capas',
     address: 'No. 8 Purante St., Brgy. Cub-cub, Capas, Tarlac',
     description: 'Committed to rescuing dogs from the illegal meat trade, rehabilitating them at their large center before adoption.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-akf.jpeg',
     contacts: new Contact('+63 939 914 2403', 'hello@akfrescues.org', 'https://facebook.com/AKFanimalrescue', 'akfrescues.org'),
     maps: 'https://maps.app.goo.gl/Ysa4VTghcEFcv6ku7'
   },
@@ -105,7 +105,7 @@ const shelters = [
     city: 'San Jose del Monte', citySlug: 'san-jose-del-monte',
     address: 'Paradise Drive, Tungkong Mangga, City of San Jose Del Monte, Bulacan',
     description: 'A rapidly growing, passion-driven initiative operating as a massive halfway home for death-row pound dogs.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-pawssion.jpeg',
     contacts: new Contact('+63 977 821 0271', 'N/A', 'https://facebook.com/PAWSsionProject', 'pawssionproject.org.ph'),
     maps: 'https://maps.google.com/?cid=12269425812427530439'
   },
@@ -115,7 +115,7 @@ const shelters = [
     city: 'Angat', citySlug: 'angat',
     address: 'No. 353 Pinaglagarian St., Brgy. Pulong Yantok, Angat, Bulacan',
     description: 'A specialized non-profit serving as the country\'s first retirement center for K-9 working dogs and rescued hounds.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-hound-haven.jpeg',
     contacts: new Contact('N/A', 'contact@houndhavenph.org', 'https://facebook.com/houndhavenph', 'houndhavenph.org'),
     maps: 'https://maps.google.com/?cid=15917202635282087284'
   },
@@ -125,19 +125,9 @@ const shelters = [
     city: 'San Miguel', citySlug: 'san-miguel',
     address: 'Zone Barangay Partida, San Miguel, Bulacan 3011',
     description: 'A dedicated sanctuary providing a safe space and medical attention to distressed and abandoned strays.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-animal-ph.jpeg',
     contacts: new Contact('+63 995 449 1376', 'N/A', 'https://facebook.com/animalrescueph', 'N/A'),
     maps: 'https://maps.google.com/?cid=14799264856635830227'
-  },
-  {
-    name: 'PART Sanctuary',
-    province: 'Bulacan', provinceSlug: 'bulacan',
-    city: 'San Jose del Monte', citySlug: 'san-jose-del-monte',
-    address: 'R34F+X48, San Jose del Monte City, Bulacan',
-    description: 'Managed by the Philippine Animal Rescue Team, operating as a registered no-kill sanctuary for rescues.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
-    contacts: new Contact('N/A', 'support@phanimalrescueteam.info', 'https://facebook.com/PhilAnimalRescueTeam', 'phanimalrescueteam.info'),
-    maps: 'https://maps.google.com/?cid=112815652817766986'
   },
   {
     name: 'Panotxa Kayumanggi OPC (Biyaya Animal Care)',
@@ -145,7 +135,7 @@ const shelters = [
     city: 'Alfonso', citySlug: 'alfonso',
     address: 'Barangay Palumlum, Alfonso, Cavite',
     description: 'A heavily active organization providing accessible spay/neuter services and sheltering hundreds of strays.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-biyaya.jpeg',
     contacts: new Contact('N/A', 'biyayaanimalcare@gmail.com', 'https://facebook.com/biyayaanimalcare', 'N/A'),
     maps: 'N/A'
   }
