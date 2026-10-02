@@ -145,8 +145,20 @@ const cityToProvince = {};
 shelters.forEach(s => { cityToProvince[s.citySlug] = s.provinceSlug; });
 
 
-/* ---- 2. Card rendering ---- */
 function renderShelterCard(shelter) {
+  const c = shelter.contacts;
+  
+  // Build contact links dynamically (only if not N/A)
+  let contactDetails = '';
+  if (c.contactNo !== 'N/A') contactDetails += `<li><strong>Phone:</strong> ${c.contactNo}</li>`;
+  if (c.email !== 'N/A') contactDetails += `<li><strong>Email:</strong> <a href="mailto:${c.email}">${c.email}</a></li>`;
+  if (c.socials !== 'N/A') contactDetails += `<li><a href="${c.socials}" target="_blank" rel="noopener">Facebook Page ↗</a></li>`;
+  if (c.website !== 'N/A') contactDetails += `<li><a href="https://${c.website.replace(/^https?:\/\//, '')}" target="_blank" rel="noopener">Official Website ↗</a></li>`;
+
+  if (!contactDetails) {
+    contactDetails = '<li>No direct contact info available</li>';
+  }
+
   return `
     <article class="shelter-card">
       <img src="${shelter.image}" alt="${shelter.name}">
@@ -155,7 +167,14 @@ function renderShelterCard(shelter) {
         <p class="shelter-loc">${shelter.city} · ${shelter.province}</p>
         <p>${shelter.description}</p>
         <div class="shelter-meta">
-          <span>${shelter.contacts.contactNo}</span>
+          <div class="contact-popover-wrapper">
+            <button class="contact-trigger" type="button">Contact info 🛈</button>
+            <div class="contact-popover">
+              <ul>
+                ${contactDetails}
+              </ul>
+            </div>
+          </div>
           <a href="${shelter.maps}" class="link-arrow" target="_blank" rel="noopener">View on map →</a>
         </div>
       </div>

@@ -106,3 +106,86 @@
   transform: translateY(-50%); 
   pointer-events: none; 
 }
+
+/* ---- Hoverable Contact Popover ---- */
+.contact-popover-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.contact-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--moss-deep);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.contact-trigger:hover,
+.contact-trigger:focus {
+  color: var(--coral-deep);
+}
+
+.contact-popover {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  z-index: 10;
+  min-width: 200px;
+  padding: .8rem 1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(35, 38, 32, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  pointer-events: none;
+}
+
+/* Triangle indicator pointing down to button */
+.contact-popover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Show popover on hover or focus */
+.contact-popover-wrapper:hover .contact-popover,
+.contact-popover-wrapper:focus-within .contact-popover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-popover ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  font-size: .8rem;
+  color: var(--ink-soft);
+}
+
+.contact-popover a {
+  color: var(--coral-deep);
+  font-weight: 600;
+}
+
+.contact-popover a:hover {
+  text-decoration: underline;
+}
