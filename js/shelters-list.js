@@ -173,25 +173,26 @@ function renderShelterCard(shelter) {
   `;
 }
 
-
 /* ---- 3. Filtering + pagination ---- */
 const PAGE_SIZE = 6;
 let currentPage = 1;
 
 const grid = document.getElementById('shelter-grid');
+const provinceGroup = document.querySelector('.filter-pills[data-filter-key="province"]');
+const cityDropdown = document.getElementById('city-filter');
 const pagerPrev = document.getElementById('pager-prev');
 const pagerNext = document.getElementById('pager-next');
 const pagerStatus = document.getElementById('pager-status');
 
-function getActiveFilter(key) {
-  const group = document.querySelector(`.filter-pills[data-filter-key="${key}"]`);
-  const activePill = group.querySelector('.pill.active');
+function getActiveProvince() {
+  const activePill = provinceGroup.querySelector('.pill.active');
   return activePill ? activePill.dataset.filter : 'all';
 }
 
 function getFilteredShelters() {
-  const province = getActiveFilter('province');
-  const city = getActiveFilter('city');
+  const province = getActiveProvince();
+  const city = cityDropdown.value;
+  
   return shelters.filter(s => {
     const matchesProvince = province === 'all' || s.provinceSlug === province;
     const matchesCity = city === 'all' || s.citySlug === city;
@@ -216,46 +217,38 @@ function renderPage() {
   pagerNext.disabled = currentPage === totalPages;
 }
 
-pagerPrev.addEventListener('click', () => {
-  currentPage--;
+pagerPrev.addEventListener('click', () => { currentPage--; renderPage(); });
+pagerNext.addEventListener('click', () => { currentPage++; renderPage(); });
+
+// Province pills: clicking one re-filters, resets a mismatched city dropdown, and resets to page 1
+provinceGroup.addEventListener('click', (e) => {
+  const pill = e.target.closest('.pill');
+  if (!pill) return;
+
+  provinceGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
+
+  const cityProvince = cityToProvince[cityDropdown.value];
+  const cityStillValid = cityDropdown.value === 'all' || pill.dataset.filter === 'all' || cityProvince === pill.dataset.filter;
+  
+  if (!cityStillValid) {
+    cityDropdown.value = 'all';
+  }
+
+  currentPage = 1;
   renderPage();
 });
-pagerNext.addEventListener('click', () => {
-  currentPage++;
+
+// City dropdown: changing it auto-selects the matching province pill and resets to page 1
+cityDropdown.addEventListener('change', () => {
+  if (cityDropdown.value !== 'all') {
+    const province = cityToProvince[cityDropdown.value];
+    provinceGroup.querySelectorAll('.pill').forEach(p => {
+      p.classList.toggle('active', p.dataset.filter === province);
+    });
+  }
+
+  currentPage = 1;
   renderPage();
-});
-
-// Filter pills: clicking one re-filters, auto-syncs province/city, and resets to page 1
-document.querySelectorAll('.filter-pills[data-filter-key]').forEach(group => {
-  const key = group.dataset.filterKey;
-
-  group.addEventListener('click', (e) => {
-    const pill = e.target.closest('.pill');
-    if (!pill) return;
-
-    group.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
-
-    if (key === 'city' && pill.dataset.filter !== 'all') {
-      const province = cityToProvince[pill.dataset.filter];
-      const provinceGroup = document.querySelector('.filter-pills[data-filter-key="province"]');
-      provinceGroup.querySelectorAll('.pill').forEach(p => {
-        p.classList.toggle('active', p.dataset.filter === province);
-      });
-    }
-
-    if (key === 'province') {
-      const cityGroup = document.querySelector('.filter-pills[data-filter-key="city"]');
-      const activeCityPill = cityGroup.querySelector('.pill.active');
-      const activeCity = activeCityPill ? activeCityPill.dataset.filter : 'all';
-      const cityStillValid = activeCity === 'all' || cityToProvince[activeCity] === pill.dataset.filter || pill.dataset.filter === 'all';
-      if (!cityStillValid) {
-        cityGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.filter === 'all'));
-      }
-    }
-
-    currentPage = 1;
-    renderPage();
-  });
 });
 
 renderPage();

@@ -14,10 +14,6 @@
   margin-bottom: .8rem;
 }
 
-.filter-pills:last-of-type {
-  margin-bottom: 2.5rem;
-}
-
 .pager {
   display: flex;
   justify-content: center;
@@ -64,4 +60,49 @@
   grid-column: 1 / -1;
   text-align: center;
   color: var(--ink-soft);
+}
+/* ---- Filter Dropdown Wrapper ---- */
+.filter-dropdown {
+  margin-bottom: 2.5rem;
+  position: relative; 
+  display: inline-block;
+  width: 200px;
+}
+
+/* ---- Select Tag ---- */
+.city-select {
+  width: 100%;      
+  padding: .6em 2.5em .6em 1.2em; 
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  outline: none;
+  transition: border-color .15s ease;
+  
+  /* Hides default browser arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+}
+
+.city-select:hover, 
+.city-select:focus { 
+  border-color: var(--moss); 
+}
+
+/* ---- Custom Arrow (Moved to the wrapper) ---- */
+.filter-dropdown::after { 
+  content: "↓";       
+  font-size: 1rem;        
+  color: var(--moss);
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%); 
+  pointer-events: none; 
 }
