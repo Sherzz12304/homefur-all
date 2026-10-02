@@ -25,7 +25,7 @@ const shelters = [
     city: 'Angeles City', citySlug: 'angeles',
     address: 'Doña Donya Aurora St, Angeles, 2009, Pampanga, Philippines',
     description: 'A community-focused local rescue effort helping stray animals find immediate foster care and forever homes.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-pawject.jpg',
     contacts: new Contact('+63 928 783 4482', 'N/A', 'N/A', 'N/A'),
     maps: 'https://maps.app.goo.gl/tyy3qBw4o7aQqw7N7'
   },
@@ -35,7 +35,7 @@ const shelters = [
     city: 'Angeles City', citySlug: 'angeles',
     address: '416 Sto. Niño, Angeles, Pampanga',
     description: 'An independent sanctuary providing shelter, food, and basic veterinary care to neglected dogs and cats.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-lykas.jpg',
     contacts: new Contact('N/A', 'N/A', 'https://www.facebook.com/lykasdogandcatshelter', 'N/A'),
     maps: 'https://maps.app.goo.gl/5d5QtEPKtwUB2LBF7'
   },
@@ -45,7 +45,7 @@ const shelters = [
     city: 'Angeles City', citySlug: 'angeles',
     address: 'City Hall Building, Aniceto Gueco St, Pulung Maragul, Angeles, 2009 Pampanga',
     description: 'The city veterinary office handling local animal control, anti-rabies vaccinations, and adoption programs.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-angeles-office.jpg',
     contacts: new Contact('(045) 322 0485', 'N/A', 'N/A', 'N/A'),
     maps: 'https://maps.app.goo.gl/k8Yc6Tz6vSmzr13t6'
   },
@@ -55,7 +55,7 @@ const shelters = [
     city: 'Mabalacat City', citySlug: 'mabalacat',
     address: 'Sitio Irung Brgy. Tabun, Mabalacat, Philippines, 2010',
     description: 'A compassionate non-profit giving neglected strays a second chance through rehabilitation and adoption drives.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-noahs-ark.jpeg',
     contacts: new Contact('+63 933 824 0324', 'leahibuna@yahoo.com', 'https://facebook.com/Noahsarkdogandcatshelter/', 'N/A'),
     maps: 'https://maps.app.goo.gl/kVgrzfG8qDAjqWNN6'
   },
@@ -65,7 +65,7 @@ const shelters = [
     city: 'Floridablanca', citySlug: 'floridablanca',
     address: 'Macapagal, Pabanlag, Floridablanca, 2006 Pampanga',
     description: 'A dedicated safe haven providing critical care and socialization to prepare local rescues for adoption.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-hows.jpg',
     contacts: new Contact('+63 909 141 4744', 'N/A', 'https://facebook.com/thehowsph/', 'N/A'),
     maps: 'https://maps.app.goo.gl/CZVtZKZLxnX9rrjp6'
   },
@@ -85,7 +85,7 @@ const shelters = [
     city: 'Quezon City', citySlug: 'quezon-city',
     address: 'P485+CMV, Clemente, Quezon City, Metro Manila',
     description: 'A progressive local government pound actively promoting responsible pet ownership and street dog adoption.',
-    image: 'https://placehold.co/400x300/2C4A3B/FAF5E8?text=Photo+Coming+Soon',
+    image: 'images/shelter/shelter-qc-center.jpeg',
     contacts: new Contact('(02) 8988 4242', 'N/A', 'N/A', 'N/A'),
     maps: 'https://maps.app.goo.gl/CUtc3HpHv9u7J6YV9'
   },
