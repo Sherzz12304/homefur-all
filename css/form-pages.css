@@ -175,20 +175,34 @@
     width: 100%;
 }
 
-.select-wrapper::after { 
-  content: "↓";       
-  font-size: 1rem;        
-  color: var(--moss);
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%); 
-  pointer-events: none; 
-}
-
+.select-wrapper input[list],
 .field select,
 .city-select {
+    width: 100%;
+    padding-right: 2.8rem !important; /* Prevents text from overlapping the arrow */
+    cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+}
+
+.select-wrapper::after { 
+    content: "\2193"; /* Unicode for ↓ arrow */     
+    font-size: 1.1rem;        
+    font-weight: 600;
+    color: var(--moss);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%); 
+    pointer-events: none; 
+}
+
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+.select-wrapper input[list] {
+    padding-right: 2.5rem !important;
 }

@@ -142,10 +142,7 @@
                         <div class="field">
                             <label for="v-shelter">Preferred shelter <span class="req">*</span></label>
                             <div class="select-wrapper">
-                                <select id="v-shelter" name="shelter" required>
-                                    <option value="">Select a preferred shelter...</option>
-                                    <option value="no-preference">No preference (Any shelter in need)</option>
-                                </select>
+                                <input id="v-shelter" name="shelter" list="shelters-datalist" placeholder="Select or type shelter..." autocomplete="off" required>
                             </div>
                         </div>
 
@@ -223,13 +220,13 @@
                         <div class="field field--full">
                             <label for="d-shelter">Target shelter for donation <span class="req">*</span></label>
                             <div class="select-wrapper">
-                                <select id="d-shelter" name="donationShelter" required>
-                                    <option value="">Select recipient shelter...</option>
-                                    <option value="general-fund">HomeFur All General Animal Care Fund</option>
-                                </select>
+                                <input id="d-shelter" name="donationShelter" list="shelters-datalist" placeholder="Select or type shelter..." autocomplete="off" required>
                             </div>
+                            <datalist id="shelters-datalist">
+                                <option value="No preference (Any shelter in need)"></option>
+                            </datalist>
                         </div>
-                        
+
                         <fieldset class="amount-group">
                             <legend>Payment method <span class="req">*</span></legend>
                             <div class="amount-list">
