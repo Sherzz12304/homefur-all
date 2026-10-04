@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer — HomeFur All</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="images/logo-icon.png">
+<link rel="shortcut icon" href="images/logo-icon.png">
+<link rel="apple-touch-icon" href="images/logo-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/form-pages.css">
+<link rel="stylesheet" href="css/volunteer.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">
+        <img src="images/logo-icon.png" alt="HomeFur All logo" width="30" height="30">
+      </span>
+      HomeFur All
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Main">
+      <a href="volunteer.html" aria-current="page">Volunteer</a>
+      <a href="adopt.html">Adopt</a>
+      <a href="index.html#help">How to Help</a>
+      <a href="index.html#about">About</a>
+      <a href="partner.html">Pawtner with us</a>
+      <a href="shelters.html" class="btn btn-primary nav-cta-mobile">Find a Shelter</a>
+    </nav>
+    <a href="shelters.html" class="btn btn-primary nav-cta">Find a Shelter</a>
+    <button class="nav-toggle" id="nav-toggle" type="button"
+            aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+    <section class="page-hero">
+        <div class="wrap">
+            <p class="eyebrow">Volunteer</p>
+            <h1>Give your time, change a life.</h1>
+      <p>Shelters run on people who show up. Whether it's an hour a week or a Saturday a month, your time directly means more animals get fed, walked, and loved on their way to a home.</p>        
+        </div>
+    </section>
+
+    <section class="page-section">
+        <div class="wrap">
+            <h2>Ways to volunteer</h2>
+            <p class="section-intro">Pick what fits your schedule and skills — every role below is needed right now across our pawtner shelters.</p>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>Shelter care</h3>
+                    <p>Walking, feeding, cleaning, and giving animals daily attention on-site.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Events &amp; fundraising</h3>
+                    <p>Help run adoption drives, donation booths, and community fundraisers.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Foster-to-adopt support</h3>
+                    <p>Support foster families with supplies, advice, or short-term relief care.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Admin &amp; social media</h3>
+                    <p>Help write pet bios, manage photos, or reply to adoption inquiries.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Transport</h3>
+                    <p>Drive animals to vet visits, foster homes, or between partner shelters.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Vet-day helper</h3>
+                    <p>Assist during vaccination and check-up days at partner clinics.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <div class="wrap">
+            <h2>Before you sign up</h2>
+            <p class="section-intro">A few basics so we can match you with the right role.</p>
+
+            <div class="facts">
+                <div class="fact">
+                    <p class="eyebrow">Age</p>
+                    <strong>16 years or older</strong>
+                    <p class="fact-note">Under 18 volunteers need a guardian's signed consent.</p>
+                </div>
+                <div class="fact">
+                    <p class="eyebrow">Time</p>
+                    <strong>2 hours minimum</strong>
+                    <p class="fact-note">Most roles ask for at least 2 hours, twice a month.</p>
+                </div>
+                <div class="fact">
+                    <p class="eyebrow">Training</p>
+                    <strong>Orientation session</strong>
+                    <p class="fact-note">A short onboarding walkthrough before your first shift.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="leash-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+            <path d="M0 30 C 200 60, 300 0, 500 30 S 800 60, 1000 20 S 1150 40, 1200 30"
+                stroke="#2C4A3B" stroke-width="3" fill="none"
+                stroke-dasharray="1 14" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <section class="form-section">
+        <div class="wrap">
+            <div class="form-card">
+                <h2>Sign up to volunteer</h2>
+                <p class="form-intro">Tell us a bit about yourself — a shelter coordinator will reach out within a few days.</p>
+
+                <form data-form data-success="Thank you! A shelter coordinator will reach out within 3-5 business days.">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="v-name">Full name <span class="req">*</span></label>
+                            <input id="v-name" name="name" type="text" placeholder="Juan Dela Cruz" autocomplete="name" required> 
+                        </div>
+                        <div class="field">
+                            <label for="v-email">Email <span class="req">*</span></label>
+                            <input id="v-email" name="email" type="email" placeholder="juan@email.com" autocomplete="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="v-phone">Phone number <span class="req">*</span></label>
+                            <input id="v-phone" name="phone" type="tel" placeholder="09XX XXX XXXX" autocomplete="tel" required>
+                        </div>
+                        <div class="field">
+                            <label for="v-shelter">Preferred shelter <span class="req">*</span></label>
+                            <select id="v-shelter" name="shelter" required>
+                                <option>No preference</option>
+                                <!-- Add the real Angeles City / Mabalacat shelters here once the list is final -->
+                            </select>
+                        </div>
+
+                        <fieldset class="check-group" data-require-one>
+                            <legend>Availability <span class="req">*</span></legend>
+                            <div class="check-list">
+                                <label class="check"><input type="checkbox" name="availability" value="Weekday mornings"> Weekday mornings</label>
+                                <label class="check"><input type="checkbox" name="availability" value="Weekday afternoons"> Weekday afternoons</label>
+                                <label class="check"><input type="checkbox" name="availability" value="Weekends"> Weekends</label>
+                                <label class="check"><input type="checkbox" name="availability" value="Evenings"> Evenings</label>
+                            </div>
+                            <p class="form-error" hidden>Pick at least one time that works for you.</p>
+                        </fieldset>
+
+                        <fieldset class="check-group" data-require-one>
+                            <legend>Area of interest <span class="req">*</span></legend>
+                            <div class="check-list">
+                                <label class="check"><input type="checkbox" name="interest" value="Shelter care"> Shelter care</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Events &amp; fundraising"> Events &amp; fundraising</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Transport"> Transport</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Admin &amp; social media"> Admin &amp; social media</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Foster-to-adopt support"> Foster-to-adopt support</label>
+                                <label class="check"><input type="checkbox" name="interest" value="Vet-day helper"> Vet-day helper</label>
+                            </div>
+                            <p class="form-error" hidden>Pick at least one area you'd like to help with.</p>
+                        </fieldset>
+
+                        <div class="field field--full">
+                            <label for="v-about">Tell us about yourself <span class="req">*</span></label>
+                            <textarea id="v-about" name="about" placeholder="Any experience with animals, or why you'd like to volunteer..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit application</button>
+                        <p class="form-note">We'll reply within 3-5 business days.</p>
+                        <p class="form-status" role="status" hidden></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="leash-divider flip" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0 30 C 200 60, 300 0, 500 30 S 800 60, 1000 20 S 1150 40, 1200 30"
+                stroke="#E8785C" stroke-width="3" fill="none"
+                stroke-dasharray="1 14" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <section class="form-section" id="donate">
+        <div class="wrap">
+            <div class="form-card">
+                <h2>Support with a donation</h2>
+                <p class="form-intro">Can't give your time right now? A donation helps cover food, vet care, and supplies for animals in need.</p>
+
+                <form data-form data-success="Thank you for your generosity! (Demo only: no payment was processed.)">
+                    <div class="form-grid">
+                        <fieldset class="amount-group">
+                        <legend>Choose an amount <span class="req">*</span></legend>
+                            <div class="amount-list">
+                                <label class="amount"><input type="radio" name="amount" value="100" required><span>₱100</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="250" required><span>₱250</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="500" required><span>₱500</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="1000" required><span>₱1,000</span></label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="logo">HomeFur All</span>
+      <p>Connecting local animal shelters with the people who can help.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="shelters.html">Shelters</a>
+      <a href="adopt.html">Adopt</a>
+      <a href="index.html#help">How to help</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get involved</h4>
+      <a href="volunteer.html">Volunteer</a>
+    </div>
+    <div class="footer-col">
+      <h4>Stay in the loop</h4>
+      <form class="newsletter">
+        <input type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 HomeFur All. A student project.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
