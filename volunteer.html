@@ -48,7 +48,7 @@
         <div class="wrap">
             <p class="eyebrow">Volunteer</p>
             <h1>Give your time, change a life.</h1>
-      <p>Shelters run on people who show up. Whether it's an hour a week or a Saturday a month, your time directly means more animals get fed, walked, and loved on their way to a home.</p>        
+            <p>Shelters run on people who show up. Whether it's an hour a week or a Saturday a month, your time directly means more animals get fed, walked, and loved on their way to a home.</p>        
         </div>
     </section>
 
@@ -125,7 +125,7 @@
                 <h2>Sign up to volunteer</h2>
                 <p class="form-intro">Tell us a bit about yourself — a shelter coordinator will reach out within a few days.</p>
 
-                <form data-form data-success="Thank you! A shelter coordinator will reach out within 3-5 business days.">
+                <form id="volunteer-form" data-form data-success="Thank you! A shelter coordinator will reach out within 3-5 business days.">
                     <div class="form-grid">
                         <div class="field">
                             <label for="v-name">Full name <span class="req">*</span></label>
@@ -142,8 +142,8 @@
                         <div class="field">
                             <label for="v-shelter">Preferred shelter <span class="req">*</span></label>
                             <select id="v-shelter" name="shelter" required>
-                                <option>No preference</option>
-                                <!-- Add the real Angeles City / Mabalacat shelters here once the list is final -->
+                                <option value="">Select a preferred shelter...</option>
+                                <option value="no-preference">No preference (Any shelter in need)</option>
                             </select>
                         </div>
 
@@ -200,17 +200,46 @@
                 <h2>Support with a donation</h2>
                 <p class="form-intro">Can't give your time right now? A donation helps cover food, vet care, and supplies for animals in need.</p>
 
-                <form data-form data-success="Thank you for your generosity! (Demo only: no payment was processed.)">
+                <form id="donation-form" data-form data-success="Thank you for your generosity! Your demo donation was received.">
                     <div class="form-grid">
                         <fieldset class="amount-group">
-                        <legend>Choose an amount <span class="req">*</span></legend>
+                            <legend>Choose an amount <span class="req">*</span></legend>
                             <div class="amount-list">
-                                <label class="amount"><input type="radio" name="amount" value="100" required><span>₱100</span></label>
-                                <label class="amount"><input type="radio" name="amount" value="250" required><span>₱250</span></label>
-                                <label class="amount"><input type="radio" name="amount" value="500" required><span>₱500</span></label>
-                                <label class="amount"><input type="radio" name="amount" value="1000" required><span>₱1,000</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="100" checked required><span>₱100</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="250"><span>₱250</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="500"><span>₱500</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="1000"><span>₱1,000</span></label>
+                                <label class="amount"><input type="radio" name="amount" value="custom"><span>Other</span></label>
                             </div>
                         </fieldset>
+
+                        <div class="field field--full" id="custom-amount-field" hidden>
+                            <label for="custom-amount">Enter custom amount (PHP) <span class="req">*</span></label>
+                            <input type="number" id="custom-amount" name="customAmount" min="50" step="50" placeholder="e.g. 1500">
+                        </div>
+
+                        <fieldset class="amount-group">
+                            <legend>Payment method <span class="req">*</span></legend>
+                            <div class="amount-list">
+                                <label class="amount"><input type="radio" name="payment_method" value="gcash" checked required><span>GCash</span></label>
+                                <label class="amount"><input type="radio" name="payment_method" value="maya"><span>Maya</span></label>
+                                <label class="amount"><input type="radio" name="payment_method" value="card"><span>Credit/Debit Card</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="field">
+                            <label for="d-name">Donor name <span class="req">*</span></label>
+                            <input id="d-name" name="donorName" type="text" placeholder="Juan Dela Cruz" required>
+                        </div>
+                        <div class="field">
+                            <label for="d-email">Email for receipt <span class="req">*</span></label>
+                            <input id="d-email" name="donorEmail" type="email" placeholder="juan@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Complete donation</button>
+                        <p class="form-note">Secure mock payment — no actual fees charged.</p>
+                        <p class="form-status" role="status" hidden></p>
                     </div>
                 </form>
             </div>
@@ -247,6 +276,8 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="js/shelters-list.js"></script>
+<script src="js/main.js"></script>
+<script src="js/volunteer.js"></script>
 </body>
 </html>

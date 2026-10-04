@@ -146,3 +146,13 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* ---- 6. Custom Donation Amount Input ---- */
+#custom-amount-field {
+    margin-top: -.2rem;
+}
+
+#custome-amount-field input {
+    background: #fff;
+    border-color: var(--moss)
+}
