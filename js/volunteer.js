@@ -8,15 +8,28 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   /* ---- 1. Dynamic Shelters Populate ---- */
-  const shelterSelect = document.getElementById('v-shelter');
-  if (shelterSelect && typeof shelters !== 'undefined') {
+  const volunteerSelect = document.getElementById('v-shelter');
+  const donationSelect = document.getElementById('d-shelter');
+
+  if (typeof shelters !== 'undefined') {
     shelters.forEach(s => {
-      const option = document.createElement('option');
-      option.value = s.name;
-      option.textContent = `${s.name} (${s.city}, ${s.province})`;
-      shelterSelect.appendChild(option);
+        const optionText = `${s.name} (${s.city}, ${s.province})`;
+
+        if (volunteerSelect) {
+            const opt = document.createElement('option');
+            opt.value = s.name;
+            opt.textContent = optionText;
+            volunteerSelect.appendChild(opt);
+        }
+
+        if (donationSelect) {
+            const opt = document.createElement('option');
+            opt.value = s.name;
+            opt.textContent = optionText;
+            donationSelect.appendChild(opt);
+        }
     });
-  }
+  };
 
   /* ---- 2. Donation Custom Amount Toggle ---- */
   const amountRadios = document.querySelectorAll('input[name="amount"]');

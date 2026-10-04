@@ -168,3 +168,27 @@
         padding: 1.5rem;
     }
 }
+
+/* ---- 5. Custom Dropdown Styling & Arrow ---- */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper::after { 
+  content: "↓";       
+  font-size: 1rem;        
+  color: var(--moss);
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%); 
+  pointer-events: none; 
+}
+
+.field select,
+.city-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

@@ -141,10 +141,12 @@
                         </div>
                         <div class="field">
                             <label for="v-shelter">Preferred shelter <span class="req">*</span></label>
-                            <select id="v-shelter" name="shelter" required>
-                                <option value="">Select a preferred shelter...</option>
-                                <option value="no-preference">No preference (Any shelter in need)</option>
-                            </select>
+                            <div class="select-wrapper">
+                                <select id="v-shelter" name="shelter" required>
+                                    <option value="">Select a preferred shelter...</option>
+                                    <option value="no-preference">No preference (Any shelter in need)</option>
+                                </select>
+                            </div>
                         </div>
 
                         <fieldset class="check-group" data-require-one>
@@ -217,7 +219,17 @@
                             <label for="custom-amount">Enter custom amount (PHP) <span class="req">*</span></label>
                             <input type="number" id="custom-amount" name="customAmount" min="50" step="50" placeholder="e.g. 1500">
                         </div>
-
+                        
+                        <div class="field field--full">
+                            <label for="d-shelter">Target shelter for donation <span class="req">*</span></label>
+                            <div class="select-wrapper">
+                                <select id="d-shelter" name="donationShelter" required>
+                                    <option value="">Select recipient shelter...</option>
+                                    <option value="general-fund">HomeFur All General Animal Care Fund</option>
+                                </select>
+                            </div>
+                        </div>
+                        
                         <fieldset class="amount-group">
                             <legend>Payment method <span class="req">*</span></legend>
                             <div class="amount-list">
