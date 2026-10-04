@@ -1,71 +1,32 @@
 /* ==========================================================================
    HomeFur All — partner.css
    --------------------------------------------------------------------------
-   Pawtner page only. Uses the shared tokens from base.css.
-   1. Hero banner
+   Pawtner page only. Loads after base.css and form-pages.css.
+   1. Coral hero variant
+   2. Four-card benefits grid
+   3. How it works (numbered steps)
+   4. FAQ accordion
+   5. Responsive
    ========================================================================== */
 
-/* ---- 1. Hero banner ---- */
 
-.page-hero {
-    padding: 4.5rem 0;
-    text-align: center;
-}
+/* ---- 1. Coral hero variant (overrides the green default in inner.css) ---- */
 .page-hero--coral {
     background: var(--coral);
 }
 .page-hero--coral .eyebrow {
     color: #fff;
 }
-.page-hero h1 {
-    margin-bottom: .5em;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    color: #fff;
-}
-.page-hero p {
-    max-width: 56ch;
-    margin: 0 auto;
-    color: #FCE8E1;
-}
 .page-hero--coral p {
     color: #FCE8E1;
 }
-/* ---- 2. Why pawtner (benefit cards) ---- */
 
-.page-section {
-  padding: 4rem 0 2rem;
-}
 
-.section-intro {
-  max-width: 52ch;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
+/* ---- 2. Four-card benefits grid ---- */
 .info-grid--4 {
-  grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
-.info-card {
-  padding: 1.6rem;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
-.info-card h3 {
-  color: var(--coral-deep);
-}
-
-.info-card p {
-  margin: 0;
-  font-size: .9rem;
-}
 
 /* ---- 3. How it works (numbered steps) ---- */
 .steps {
@@ -74,7 +35,6 @@
     gap: 2rem;
     margin-top: 2rem;
 }
-
 .step-num {
     display: grid;
     place-items: center;
@@ -88,133 +48,23 @@
     font-weight: 600;
     color: #fff;
 }
-
-.step h3 { margin-bottom: .3em; }
-
+.step h3 {
+    margin-bottom: .3em;
+}
 .step p {
     margin: 0;
     font-size: .9rem;
 }
 
-/* ---- 4. Application form ---- */
-.form-section { padding: 1rem 0 4rem; }
 
-.form-card {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 3rem;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-}
-
-.form-card h2,
-.form-intro {
-    text-align: center;
-}
-
-.form-intro { margin-bottom: 2rem; }
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.4rem 1.5rem;
-}
-
-.field {
-    display: flex;
-    flex-direction: column;
-    gap: .45rem;
-}
-
-.field--full {
-    grid-column: 1 / -1;
-}
-
-.field label {
-    font-size: .9rem;
-    font-weight: 600;
-    color: var(--ink);
-}
-
-.req { color: var(--coral-deep); }
-
-.field input {
-    width: 100%;
-    padding: .9em 1.1em;
-    background: var(--sand-light);
-    border: 1.5px solid var(--line);
-    border-radius: 14px;
-    font: inherit;
-    font-size: .95rem;
-    color: var(--ink);
-}
-
-.field ::placeholder { color: rgba(35, 38, 32, 0.4); }
-
-.field input:focus {
-    outline: none;
-    border-color: var(--coral);
-    background: #fff;
-}
-
-.optional {
-  font-weight: 400;
-  color: var(--ink-soft);
-}
-
-.field textarea {
-  width: 100%;
-  min-height: 140px;
-  padding: .9em 1.1em;
-  background: var(--sand-light);
-  border: 1.5px solid var(--line);
-  border-radius: 14px;
-  font: inherit;
-  font-size: .95rem;
-  color: var(--ink);
-  resize: vertical;
-}
-
-.field textarea:focus {
-  outline: none;
-  border-color: var(--coral);
-  background: #fff;
-}
-
-.form-actions {
-    margin-top: 1.8rem;
-    text-align: center;
-}
-
-.form-actions .btn {
-    width: min(100%, 380px);
-    padding: 1.05em 2em;
-}
-
-.form-note {
-    margin: .8rem 0 0;
-    font-size: .9rem
-}
-
-.form-status {
-    margin: 1rem 0 0;
-    font-weight: 600;
-    color: var(--moss);
-}
-
-/* ---- 5. FAQ accordion ---- */
-.page-section--last {
-    padding-bottom: 5rem;
-}
-
+/* ---- 4. FAQ accordion ---- */
 .faq {
     max-width: 820px;
     margin: 1.5rem auto 0;
 }
-
-.faq-item { border-bottom: 1px solid var(--line); }
-
+.faq-item {
+    border-bottom: 1px solid var(--line);
+}
 .faq-item summary {
     display: flex;
     justify-content: space-between;
@@ -225,25 +75,24 @@
     list-style: none;
     cursor: pointer;
 }
-
 .faq-item summary::-webkit-details-marker {
     display: none;
 }
-
 .faq-item summary::after {
     content: "+";
     font-size: 1.4rem;
     color: var(--coral-deep);
 }
-
-.faq-item[open] summary::after { content: "\2212"; }
-
+.faq-item[open] summary::after {
+    content: "\2212";
+}
 .faq-item p {
     margin: 0 0 1.1rem;
     font-size: .95rem;
 }
 
-/* ---- 6. Responsive ---- */
+
+/* ---- 5. Responsive ---- */
 @media (max-width: 1024px) {
     .info-grid--4 {
         grid-template-columns: repeat(2, 1fr);
@@ -254,19 +103,10 @@
     .steps {
         grid-template-columns: 1fr;
     }
-    .info-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 @media (max-width: 640px) {
-    .info-grid,
-    .info-grid--4,
-    .form-grid {
+    .info-grid--4 {
         grid-template-columns: 1fr;
-    }
-
-    .form-card {
-        padding: 1.5rem;
     }
 }

@@ -1,0 +1,148 @@
+/* ==========================================================================
+   HomeFur All — volunteer.css
+   --------------------------------------------------------------------------
+   Volunteer page only. Loads after base.css and form-pages.css.
+   1. Before you sign up (facts panel)
+   2. Responsive
+   ========================================================================== */
+
+/* ---- 1. Before you sign up (facts panel) ---- */
+.facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+.fact .eyebrow {
+    margin-bottom: .4em;
+}
+.fact strong {
+    display: block;
+    margin-bottom: .3rem;
+    color: var(--ink);
+}
+.fact-note {
+    margin: 0;
+    font-size: .82rem;
+}
+
+/* ---- 2. Dropwdown (styled to match the text inputs) ---- */
+.field select {
+    width: 100%;
+    padding: .9em 1.1em;
+    background: var(--sand-light);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    font: inherit;
+    font-size: .95rem;
+    color: var(--ink);
+    cursor: pointer;
+}
+.field select:focus {
+    outline: none;
+    border-color: var(--coral);
+    background: #fff;
+}
+
+/* ---- 3. Checkbox groups (availability, areas of interest) ---- */
+.check-group {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: .6rem 1.2rem 1.2rem;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+}
+.check-group legend {
+    padding: 0 .5rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+.check-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem 1.6rem;
+}
+.check {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+}
+.check input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--moss);
+}
+.form-error {
+    margin: .5rem 0 0;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--coral-deep);
+}
+
+/* ---- 4. Donation amount buttons ---- */
+.amount-group {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.amount-group legend {
+    padding: 0;
+    margin-bottom: .6rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+.amount-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+.amount {
+    position: relative;
+    cursor: pointer;
+}
+/* The real radio button is hidden; the <span> next to it is the visible button */
+.amount input {
+    position: absolute;
+    opacity: 0;
+}
+.amount span {
+    display: inline-block;
+    padding: .7em 1.5em;
+    background: var(--sand-light);
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: background .15s ease, color .15s ease;
+}
+.amount:hover span {
+    border-color: var(--moss);
+}
+.amount input:checked + span {
+    background: var(--moss);
+    border-color: var(--moss);
+    color: #fff;
+}
+/* Keeps a visible outline for keyboard users, since the radio itself is hidden */
+.amount input:focus-visible + span {
+    outline: 3px solid var(--coral);
+    outline-offset: 3px;
+}
+
+/* ---- 5. Responsive ---- */
+@media (max-width: 860px) {
+    .facts {
+        grid-template-columns: 1fr;
+    }
+}
