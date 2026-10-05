@@ -97,7 +97,7 @@
 
 /* ---- Custom Arrow (Moved to the wrapper) ---- */
 .filter-dropdown::after { 
-  content: "↓";       
+  content: "\2193";       
   font-size: 1rem;        
   color: var(--moss);
   position: absolute;
@@ -302,4 +302,59 @@
 
 .contact-info a:hover {
   color: #fff;
+}
+/* ---- Filter Controls Stack & Input Styling ---- */
+.filter-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem;
+}
+
+.filter-controls .filter-dropdown {
+  margin-bottom: 0;
+  width: 280px;
+  position: relative;
+}
+
+.filter-controls input[list] {
+  width: 100%;
+  padding: .6em 2.6em .6em 1.2em !important;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink);
+  outline: none;
+  cursor: pointer;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Hide native Chrome/Blink datalist arrow to prevent double arrows */
+.filter-controls input::-webkit-calendar-picker-indicator {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.filter-controls input[list]:hover,
+.filter-controls input[list]:focus {
+  border-color: var(--moss);
+}
+
+/* Custom arrow positioning */
+.filter-controls .select-wrapper::after {
+  content: "\2193";
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--moss);
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
