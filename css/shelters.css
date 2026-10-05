@@ -371,3 +371,68 @@
   transform: translateY(-50%);
   pointer-events: none;
 }
+
+/* ---- Skeleton Loader Styles ---- */
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-box {
+  background-color: #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* Linear shimmer effect moving across elements */
+.skeleton-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(255, 255, 255, 0.7) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-text {
+  height: 0.85rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.skeleton-text.title {
+  height: 1.2rem;
+  width: 60%;
+  margin-bottom: 0.8rem;
+}
+
+.skeleton-text.short {
+  width: 40%;
+}
+
+/* ---- Fade-in Entrance Animations ---- */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

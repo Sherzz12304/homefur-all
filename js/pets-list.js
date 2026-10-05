@@ -29,7 +29,7 @@ const pets = [
     new Pet(8, 'Kloi', 'cat', 'Puspin', '6 mos', 'The Home of Well-Loved Strays'),
 
     // Page 2
-    new Pet(9, 'Hiroshi', 'cat', 'Lynx Siamese Mix', '2 yrs', 'The Pawject', 'images/adopt/adopt9-hiroshi.jpeg'),
+    new Pet(9, 'Hiroshi', 'cat', 'Lynx Siamese Mix', '2 yrs', 'The Pawject', 'images/adopt/adopt-hiro.jpeg'),
     new Pet(10, 'Pepper', 'cat', 'Puspin', '1 yr', 'PAWSsion Project'),
     new Pet(11, 'Teddy', 'dog', 'Hound Mix', '6 yrs', 'Hound Haven PH Inc.'),
     new Pet(12, 'Simba', 'cat', 'Puspin', '2 yrs', 'Animal Rescue PH'),
@@ -180,26 +180,68 @@ function getFilteredPets() {
   });
 }
 
-function renderPetPage() {
+/* Render temporary skeleton cards while loading */
+function renderSkeletons(count = 8) {
   if (!petGrid) return;
-  const filtered = getFilteredPets();
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PETS_PAGE_SIZE));
-  currentPetPage = Math.min(currentPetPage, totalPages);
+  
+  const skeletonCard = `
+    <article class="pet-card skeleton-card">
+      <div class="pet-card-image-wrap skeleton-box"></div>
+      <div class="pet-body">
+        <div class="skeleton-box skeleton-text title"></div>
+        <div class="skeleton-box skeleton-text"></div>
+        <div class="skeleton-box skeleton-text short"></div>
+      </div>
+    </article>
+  `;
 
-  const start = (currentPetPage - 1) * PETS_PAGE_SIZE;
-  const pageItems = filtered.slice(start, start + PETS_PAGE_SIZE);
-
-  petGrid.innerHTML = pageItems.length
-    ? pageItems.map(renderPetCard).join('')
-    : '<p class="no-results">No pets match this shelter or category right now.</p>';
-
-  if (petPagerStatus) petPagerStatus.textContent = `Page ${currentPetPage} of ${totalPages}`;
-  if (petPagerPrev) petPagerPrev.disabled = currentPetPage === 1;
-  if (petPagerNext) petPagerNext.disabled = currentPetPage === totalPages;
+  petGrid.innerHTML = Array(count).fill(skeletonCard).join('');
 }
 
-if (petPagerPrev) petPagerPrev.addEventListener('click', () => { currentPetPage--; renderPetPage(); });
-if (petPagerNext) petPagerNext.addEventListener('click', () => { currentPetPage++; renderPetPage(); });
+function renderPetPage() {
+  if (!petGrid) return;
+
+  // Show skeletons immediately
+  renderSkeletons(PETS_PAGE_SIZE);
+
+  // Render actual cards after a short transition frame
+  setTimeout(() => {
+    const filtered = getFilteredPets();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PETS_PAGE_SIZE));
+    currentPetPage = Math.min(currentPetPage, totalPages);
+
+    const start = (currentPetPage - 1) * PETS_PAGE_SIZE;
+    const pageItems = filtered.slice(start, start + PETS_PAGE_SIZE);
+
+    petGrid.innerHTML = pageItems.length
+      ? pageItems.map(renderPetCard).join('')
+      : '<p class="no-results">No pets match this shelter or category right now.</p>';
+
+    if (petPagerStatus) petPagerStatus.textContent = `Page ${currentPetPage} of ${totalPages}`;
+    if (petPagerPrev) petPagerPrev.disabled = currentPetPage === 1;
+    if (petPagerNext) petPagerNext.disabled = currentPetPage === totalPages;
+  }, 200);
+}
+
+/* Event listeners */
+if (petPagerPrev) {
+  petPagerPrev.addEventListener('click', () => {
+    if (currentPetPage > 1) {
+      currentPetPage--;
+      renderPetPage();
+    }
+  });
+}
+
+if (petPagerNext) {
+  petPagerNext.addEventListener('click', () => {
+    const totalPages = Math.ceil(getFilteredPets().length / PETS_PAGE_SIZE);
+    if (currentPetPage < totalPages) {
+      currentPetPage++;
+      renderPetPage();
+    }
+  });
+}
 
 if (petFilterGroup) {
   petFilterGroup.addEventListener('click', (e) => {
