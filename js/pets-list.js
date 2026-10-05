@@ -41,7 +41,7 @@ const pets = [
     // Page 3
     new Pet(17, 'Oreo', 'dog', 'Aspin', '3.5 yrs', 'The Pawject'),
     new Pet(18, 'Felix', 'cat', 'Puspin', '4 yrs', 'LYKA\'s Dog and Cat Shelter'),
-    new Pet(19, 'Buster', 'dog', 'Aspin', '1 yr', 'Noah\'s Ark Dog and Cat Shelter'),
+    new Pet(19, 'Buster', 'dog', 'Aspin', '1 yr', 'Veterinary Office - Lungsod ng Angeles (Government Office)'),
     new Pet(20, 'Tofu', 'cat', 'Puspin', '7 mos', 'The Home of Well-Loved Strays'),
     new Pet(21, 'Bear', 'dog', 'German Shepherd Mix', '8 yrs', 'Hound Haven PH Inc.'),
     new Pet(22, 'Garfield', 'cat', 'Puspin', '2 yrs', 'PAWS Animal Rehabilitation Center'),
