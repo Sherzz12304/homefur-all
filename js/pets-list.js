@@ -29,7 +29,7 @@ const pets = [
     new Pet(8, 'Kloi', 'cat', 'Puspin', '6 mos', 'The Home of Well-Loved Strays'),
 
     // Page 2
-    new Pet(9, 'Hiroshi', 'cat', 'Lynx Siamese Mix', '2 yrs', 'The Pawject', 'images/adopt/adopt9-hiroshi.jpeg'),
+    new Pet(9, 'Hiroshi', 'cat', 'Lynx Siamese Mix', '2 yrs', 'The Pawject', 'images/adopt/adopt-hiro.jpeg'),
     new Pet(10, 'Pepper', 'cat', 'Puspin', '1 yr', 'PAWSsion Project'),
     new Pet(11, 'Teddy', 'dog', 'Hound Mix', '6 yrs', 'Hound Haven PH Inc.'),
     new Pet(12, 'Simba', 'cat', 'Puspin', '2 yrs', 'Animal Rescue PH'),
@@ -41,7 +41,7 @@ const pets = [
     // Page 3
     new Pet(17, 'Oreo', 'dog', 'Aspin', '3.5 yrs', 'The Pawject'),
     new Pet(18, 'Felix', 'cat', 'Puspin', '4 yrs', 'LYKA\'s Dog and Cat Shelter'),
-    new Pet(19, 'Buster', 'dog', 'Aspin', '1 yr', 'Veterinary Office - Lungsod ng Angeles (Government Office)'),
+    new Pet(19, 'Buster', 'dog', 'Aspin', '1 yr', 'Noah\'s Ark Dog and Cat Shelter'),
     new Pet(20, 'Tofu', 'cat', 'Puspin', '7 mos', 'The Home of Well-Loved Strays'),
     new Pet(21, 'Bear', 'dog', 'German Shepherd Mix', '8 yrs', 'Hound Haven PH Inc.'),
     new Pet(22, 'Garfield', 'cat', 'Puspin', '2 yrs', 'PAWS Animal Rehabilitation Center'),
@@ -137,24 +137,6 @@ function renderPetCard(pet) {
   `;
 }
 
-// Render temporary skeleton cards
-function renderSkeleton(count = 0) {
-  if (!petGrid) return;
-
-  const skeletonCard = `
-    <article class="pet-card skeleton-card">
-      <div class="pet-card-image-wrap skeleton-box"></div>
-      <div class="pet-body">
-        <div class="skeleton-box skeleton-text title"></div>
-        <div class="skeleton-box skeleton-text">
-        <div class="skeleton-box skeleton-text short"></div>
-      </div>
-    </article>
-  `;
-
-  petGrid.innerHTML = Array(count).fill(skeletonCard).join('');
-}
-
 /* ---- 3. Filtering + pagination ---- */
 const PETS_PAGE_SIZE = 8;
 let currentPetPage = 1;
@@ -198,11 +180,29 @@ function getFilteredPets() {
   });
 }
 
+/* Render temporary skeleton cards while loading */
+function renderSkeletons(count = 8) {
+  if (!petGrid) return;
+  
+  const skeletonCard = `
+    <article class="pet-card skeleton-card">
+      <div class="pet-card-image-wrap skeleton-box"></div>
+      <div class="pet-body">
+        <div class="skeleton-box skeleton-text title"></div>
+        <div class="skeleton-box skeleton-text"></div>
+        <div class="skeleton-box skeleton-text short"></div>
+      </div>
+    </article>
+  `;
+
+  petGrid.innerHTML = Array(count).fill(skeletonCard).join('');
+}
+
 function renderPetPage() {
   if (!petGrid) return;
 
   // Show skeletons immediately
-  renderSkeleton(PETS_PAGE_SIZE);
+  renderSkeletons(PETS_PAGE_SIZE);
 
   // Render actual cards after a short transition frame
   setTimeout(() => {
@@ -221,6 +221,44 @@ function renderPetPage() {
     if (petPagerPrev) petPagerPrev.disabled = currentPetPage === 1;
     if (petPagerNext) petPagerNext.disabled = currentPetPage === totalPages;
   }, 200);
+}
+
+/* Event listeners */
+if (petPagerPrev) {
+  petPagerPrev.addEventListener('click', () => {
+    if (currentPetPage > 1) {
+      currentPetPage--;
+      renderPetPage();
+    }
+  });
+}
+
+if (petPagerNext) {
+  petPagerNext.addEventListener('click', () => {
+    const totalPages = Math.ceil(getFilteredPets().length / PETS_PAGE_SIZE);
+    if (currentPetPage < totalPages) {
+      currentPetPage++;
+      renderPetPage();
+    }
+  });
+}
+
+if (petFilterGroup) {
+  petFilterGroup.addEventListener('click', (e) => {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+
+    petFilterGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
+    currentPetPage = 1;
+    renderPetPage();
+  });
+}
+
+if (petShelterInput) {
+  petShelterInput.addEventListener('input', () => {
+    currentPetPage = 1;
+    renderPetPage();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
