@@ -34,6 +34,16 @@
   display: none !important;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* Adjust 80px to match actual header height */
+section[id],
+div[id] {
+  scroll-margin-top: 80px;
+}
+
 body {
     margin: 0;
     font-family: var(--font-body);
