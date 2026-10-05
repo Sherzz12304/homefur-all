@@ -143,9 +143,25 @@ let currentPetPage = 1;
 
 const petGrid = document.getElementById('pet-grid');
 const petFilterGroup = document.querySelector('.filter-pills[data-filter-key="type"]');
+const petShelterInput = document.getElementById('pet-shelter-filter');
+const petShelterDatalist = document.getElementById('pet-shelters-datalist');
 const petPagerPrev = document.getElementById('pager-prev');
 const petPagerNext = document.getElementById('pager-next');
 const petPagerStatus = document.getElementById('pager-status');
+
+/* Populate Shelter Datalist dynamically */
+function populatePetShelterDatalist() {
+  if (!petShelterDatalist) return;
+  
+  // Extract unique shelter names from pets array
+  const uniqueShelters = [...new Set(pets.map(p => p.shelterName))].sort();
+  
+  uniqueShelters.forEach(shelterName => {
+    const option = document.createElement('option');
+    option.value = shelterName;
+    petShelterDatalist.appendChild(option);
+  });
+}
 
 function getActiveType() {
   if (!petFilterGroup) return 'all';
@@ -155,7 +171,13 @@ function getActiveType() {
 
 function getFilteredPets() {
   const type = getActiveType();
-  return pets.filter(p => type === 'all' || p.type === type);
+  const shelterQuery = petShelterInput ? petShelterInput.value.trim().toLowerCase() : '';
+
+  return pets.filter(p => {
+    const matchesType = (type === 'all' || p.type === type);
+    const matchesShelter = (!shelterQuery || shelterQuery === 'all shelters' || p.shelterName.toLowerCase().includes(shelterQuery));
+    return matchesType && matchesShelter;
+  });
 }
 
 function renderPetPage() {
@@ -169,7 +191,7 @@ function renderPetPage() {
 
   petGrid.innerHTML = pageItems.length
     ? pageItems.map(renderPetCard).join('')
-    : '<p class="no-results">No pets match this category right now.</p>';
+    : '<p class="no-results">No pets match this shelter or category right now.</p>';
 
   if (petPagerStatus) petPagerStatus.textContent = `Page ${currentPetPage} of ${totalPages}`;
   if (petPagerPrev) petPagerPrev.disabled = currentPetPage === 1;
@@ -190,4 +212,14 @@ if (petFilterGroup) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', renderPetPage);
+if (petShelterInput) {
+  petShelterInput.addEventListener('input', () => {
+    currentPetPage = 1;
+    renderPetPage();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  populatePetShelterDatalist();
+  renderPetPage();
+});
