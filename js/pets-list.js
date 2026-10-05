@@ -137,6 +137,24 @@ function renderPetCard(pet) {
   `;
 }
 
+// Render temporary skeleton cards
+function renderSkeleton(count = 0) {
+  if (!petGrid) return;
+
+  const skeletonCard = `
+    <article class="pet-card skeleton-card">
+      <div class="pet-card-image-wrap skeleton-box"></div>
+      <div class="pet-body">
+        <div class="skeleton-box skeleton-text title"></div>
+        <div class="skeleton-box skeleton-text">
+        <div class="skeleton-box skeleton-text short"></div>
+      </div>
+    </article>
+  `;
+
+  petGrid.innerHTML = Array(count).fill(skeletonCard).join('');
+}
+
 /* ---- 3. Filtering + pagination ---- */
 const PETS_PAGE_SIZE = 8;
 let currentPetPage = 1;
@@ -182,41 +200,27 @@ function getFilteredPets() {
 
 function renderPetPage() {
   if (!petGrid) return;
-  const filtered = getFilteredPets();
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PETS_PAGE_SIZE));
-  currentPetPage = Math.min(currentPetPage, totalPages);
 
-  const start = (currentPetPage - 1) * PETS_PAGE_SIZE;
-  const pageItems = filtered.slice(start, start + PETS_PAGE_SIZE);
+  // Show skeletons immediately
+  renderSkeleton(PETS_PAGE_SIZE);
 
-  petGrid.innerHTML = pageItems.length
-    ? pageItems.map(renderPetCard).join('')
-    : '<p class="no-results">No pets match this shelter or category right now.</p>';
+  // Render actual cards after a short transition frame
+  setTimeout(() => {
+    const filtered = getFilteredPets();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PETS_PAGE_SIZE));
+    currentPetPage = Math.min(currentPetPage, totalPages);
 
-  if (petPagerStatus) petPagerStatus.textContent = `Page ${currentPetPage} of ${totalPages}`;
-  if (petPagerPrev) petPagerPrev.disabled = currentPetPage === 1;
-  if (petPagerNext) petPagerNext.disabled = currentPetPage === totalPages;
-}
+    const start = (currentPetPage - 1) * PETS_PAGE_SIZE;
+    const pageItems = filtered.slice(start, start + PETS_PAGE_SIZE);
 
-if (petPagerPrev) petPagerPrev.addEventListener('click', () => { currentPetPage--; renderPetPage(); });
-if (petPagerNext) petPagerNext.addEventListener('click', () => { currentPetPage++; renderPetPage(); });
+    petGrid.innerHTML = pageItems.length
+      ? pageItems.map(renderPetCard).join('')
+      : '<p class="no-results">No pets match this shelter or category right now.</p>';
 
-if (petFilterGroup) {
-  petFilterGroup.addEventListener('click', (e) => {
-    const pill = e.target.closest('.pill');
-    if (!pill) return;
-
-    petFilterGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
-    currentPetPage = 1;
-    renderPetPage();
-  });
-}
-
-if (petShelterInput) {
-  petShelterInput.addEventListener('input', () => {
-    currentPetPage = 1;
-    renderPetPage();
-  });
+    if (petPagerStatus) petPagerStatus.textContent = `Page ${currentPetPage} of ${totalPages}`;
+    if (petPagerPrev) petPagerPrev.disabled = currentPetPage === 1;
+    if (petPagerNext) petPagerNext.disabled = currentPetPage === totalPages;
+  }, 200);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
