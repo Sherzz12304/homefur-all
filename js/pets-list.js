@@ -77,19 +77,37 @@ function findMatchingShelter(petShelterName) {
 function renderPetCard(pet) {
   const shelter = findMatchingShelter(pet.shelterName);
 
-  let shelterContact = 'Contact shelter for adoption details';
+  let contactLinksHtml = '';
   let mapLink = '#';
 
   if (shelter) {
     if (shelter.contacts) {
       const c = shelter.contacts;
-      if (c.contactNo && c.contactNo !== 'N/A') shelterContact = `Call: ${c.contactNo}`;
-      else if (c.email && c.email !== 'N/A') shelterContact = `Email: ${c.email}`;
-      else if (c.socials && c.socials !== 'N/A') shelterContact = 'Available via Facebook';
+      let links = [];
+
+      if (c.contactNo && c.contactNo !== 'N/A') {
+        const cleanNo = c.contactNo.replace(/[^\d+]/g, '');
+        links.push(`Call: <a href="tel:${cleanNo}">${c.contactNo}</a>`);
+      }
+      if (c.email && c.email !== 'N/A') {
+        links.push(`<a href="mailto:${c.email}">Email Shelter ↗</a>`);
+      }
+      if (c.socials && c.socials !== 'N/A') {
+        links.push(`<a href="${c.socials}" target="_blank" rel="noopener">Facebook Page ↗</a>`);
+      }
+      if (c.website && c.website !== 'N/A') {
+        const webUrl = c.website.startsWith('http') ? c.website : `https://${c.website}`;
+        links.push(`<a href="${webUrl}" target="_blank" rel="noopener">Official Website ↗</a>`);
+      }
+
+      contactLinksHtml = links.length ? links.join(' · ') : 'Contact shelter for adoption details';
     }
+
     if (shelter.maps && shelter.maps !== 'N/A') {
       mapLink = shelter.maps;
     }
+  } else {
+    contactLinksHtml = 'Contact shelter for adoption details';
   }
 
   const typeIcon = pet.type === 'dog' ? 'images/icon-dog.png' : 'images/icon-cat.png';
@@ -106,7 +124,7 @@ function renderPetCard(pet) {
           </span>
           <div class="hover-details">
             <p class="shelter-info"><strong>Shelter:</strong> ${pet.shelterName}</p>
-            <p class="contact-info">${shelterContact}</p>
+            <p class="contact-info">${contactLinksHtml}</p>
             ${mapLink !== '#' ? `<a href="${mapLink}" target="_blank" rel="noopener" class="pet-map-link">View Location →</a>` : ''}
           </div>
         </div>
