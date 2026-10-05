@@ -175,6 +175,29 @@ function renderShelterCard(shelter) {
   `;
 }
 
+/* Render temporary skeleton cards for shelters */
+function renderShelterSkeletons(count = 6) {
+  if (!shelterGrid) return;
+
+  const skeletonCard = `
+    <article class="shelter-card skeleton-card">
+      <div style="height: 180px; width: 100%;" class="skeleton-box"></div>
+      <div class="shelter-body">
+        <div class="skeleton-box skeleton-text title"></div>
+        <div class="skeleton-box skeleton-text short" style="margin-bottom: 1rem;"></div>
+        <div class="skeleton-box skeleton-text"></div>
+        <div class="skeleton-box skeleton-text"></div>
+        <div class="shelter-meta" style="border-top: 1px solid var(--line); padding-top: 1rem; margin-top: auto;">
+          <div class="skeleton-box skeleton-text short" style="width: 80px; margin: 0;"></div>
+          <div class="skeleton-box skeleton-text short" style="width: 90px; margin: 0;"></div>
+        </div>
+      </div>
+    </article>
+  `;
+
+  shelterGrid.innerHTML = Array(count).fill(skeletonCard).join('');
+}
+
 /* ---- 3. Filtering + pagination ---- */
 const SHELTER_PAGE_SIZE = 6;
 let currentShelterPage = 1;
@@ -206,20 +229,26 @@ function getFilteredShelters() {
 function renderShelterPage() {
   if (!shelterGrid) return;
 
-  const filtered = getFilteredShelters();
-  const totalPages = Math.max(1, Math.ceil(filtered.length / SHELTER_PAGE_SIZE));
-  currentShelterPage = Math.min(currentShelterPage, totalPages);
+  // 1. Show skeletons immediately
+  renderShelterSkeletons(SHELTER_PAGE_SIZE);
 
-  const start = (currentShelterPage - 1) * SHELTER_PAGE_SIZE;
-  const pageItems = filtered.slice(start, start + SHELTER_PAGE_SIZE);
+  // 2. Render actual shelter cards after a brief frame
+  setTimeout(() => {
+    const filtered = getFilteredShelters();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / SHELTER_PAGE_SIZE));
+    currentShelterPage = Math.min(currentShelterPage, totalPages);
 
-  shelterGrid.innerHTML = pageItems.length
-    ? pageItems.map(renderShelterCard).join('')
-    : '<p class="no-results">No shelters match these filters yet.</p>';
+    const start = (currentShelterPage - 1) * SHELTER_PAGE_SIZE;
+    const pageItems = filtered.slice(start, start + SHELTER_PAGE_SIZE);
 
-  if (pagerStatusShelter) pagerStatusShelter.textContent = `Page ${currentShelterPage} of ${totalPages}`;
-  if (pagerPrevShelter) pagerPrevShelter.disabled = currentShelterPage === 1;
-  if (pagerNextShelter) pagerNextShelter.disabled = currentShelterPage === totalPages;
+    shelterGrid.innerHTML = pageItems.length
+      ? pageItems.map(renderShelterCard).join('')
+      : '<p class="no-results">No shelters match these filters yet.</p>';
+
+    if (pagerStatusShelter) pagerStatusShelter.textContent = `Page ${currentShelterPage} of ${totalPages}`;
+    if (pagerPrevShelter) pagerPrevShelter.disabled = currentShelterPage === 1;
+    if (pagerNextShelter) pagerNextShelter.disabled = currentShelterPage === totalPages;
+  }, 200);
 }
 
 if (shelterGrid) {
