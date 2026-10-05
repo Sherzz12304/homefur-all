@@ -29,7 +29,7 @@ const pets = [
     new Pet(8, 'Kloi', 'cat', 'Puspin', '6 mos', 'The Home of Well-Loved Strays'),
 
     // Page 2
-    new Pet(9, 'Hiroshi', 'cat', 'Lynx Siamese Mix', '2 yrs', 'The Pawject', 'images/adopt/adopt9-hiro.jpeg'),
+    new Pet(9, 'Hiroshi', 'cat', 'Lynx Siamese Mix', '2 yrs', 'The Pawject', 'images/adopt/adopt9-hiroshi.jpeg'),
     new Pet(10, 'Pepper', 'cat', 'Puspin', '1 yr', 'PAWSsion Project'),
     new Pet(11, 'Teddy', 'dog', 'Hound Mix', '6 yrs', 'Hound Haven PH Inc.'),
     new Pet(12, 'Simba', 'cat', 'Puspin', '2 yrs', 'Animal Rescue PH'),
