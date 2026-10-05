@@ -55,7 +55,6 @@ const pets = [
 
 /* ---- 2. Card rendering ---- */
 function renderPetCard(pet) {
-  // Safe shelter lookup so the card renders even if shelters array isn't available
   let shelterContact = 'Contact shelter for adoption details';
   let mapLink = '#';
 
@@ -103,7 +102,7 @@ function renderPetCard(pet) {
 }
 
 /* ---- 3. Filtering + pagination ---- */
-const PETS_PAGE_SIZE = 8; // Renamed to avoid global scope collision with shelters-list.js
+const PETS_PAGE_SIZE = 8;
 let currentPetPage = 1;
 
 const petGrid = document.getElementById('pet-grid');

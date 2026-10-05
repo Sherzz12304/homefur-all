@@ -1,13 +1,3 @@
-/* ==========================================================================
-   HomeFur All — shelters-list.js
-   --------------------------------------------------------------------------
-   Shelters page only.
-   1. Shelter data (Contact class + shelters array)
-   2. Card rendering
-   3. Filtering (province + city pills) + pagination (6 per page)
-   ========================================================================== */
-
-
 /* ---- 1. Shelter data ---- */
 class Contact {
   constructor(contactNo, email, socials, website) {
@@ -144,11 +134,9 @@ const shelters = [
 const cityToProvince = {};
 shelters.forEach(s => { cityToProvince[s.citySlug] = s.provinceSlug; });
 
-
 function renderShelterCard(shelter) {
   const c = shelter.contacts;
   
-  // Build contact links dynamically (only if not N/A)
   let contactDetails = '';
   if (c.contactNo !== 'N/A') contactDetails += `<li><strong>Phone:</strong> ${c.contactNo}</li>`;
   if (c.email !== 'N/A') contactDetails += `<li><strong>Email:</strong> <a href="mailto:${c.email}">${c.email}</a></li>`;
@@ -183,24 +171,25 @@ function renderShelterCard(shelter) {
 }
 
 /* ---- 3. Filtering + pagination ---- */
-const PAGE_SIZE = 6;
-let currentPage = 1;
+const SHELTER_PAGE_SIZE = 6;
+let currentShelterPage = 1;
 
-const grid = document.getElementById('shelter-grid');
+const shelterGrid = document.getElementById('shelter-grid');
 const provinceGroup = document.querySelector('.filter-pills[data-filter-key="province"]');
 const cityDropdown = document.getElementById('city-filter');
-const pagerPrev = document.getElementById('pager-prev');
-const pagerNext = document.getElementById('pager-next');
-const pagerStatus = document.getElementById('pager-status');
+const pagerPrevShelter = document.getElementById('pager-prev');
+const pagerNextShelter = document.getElementById('pager-next');
+const pagerStatusShelter = document.getElementById('pager-status');
 
 function getActiveProvince() {
+  if (!provinceGroup) return 'all';
   const activePill = provinceGroup.querySelector('.pill.active');
   return activePill ? activePill.dataset.filter : 'all';
 }
 
 function getFilteredShelters() {
   const province = getActiveProvince();
-  const city = cityDropdown.value;
+  const city = cityDropdown ? cityDropdown.value : 'all';
   
   return shelters.filter(s => {
     const matchesProvince = province === 'all' || s.provinceSlug === province;
@@ -209,55 +198,65 @@ function getFilteredShelters() {
   });
 }
 
-function renderPage() {
+function renderShelterPage() {
+  if (!shelterGrid) return;
+
   const filtered = getFilteredShelters();
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  currentPage = Math.min(currentPage, totalPages);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / SHELTER_PAGE_SIZE));
+  currentShelterPage = Math.min(currentShelterPage, totalPages);
 
-  const start = (currentPage - 1) * PAGE_SIZE;
-  const pageItems = filtered.slice(start, start + PAGE_SIZE);
+  const start = (currentShelterPage - 1) * SHELTER_PAGE_SIZE;
+  const pageItems = filtered.slice(start, start + SHELTER_PAGE_SIZE);
 
-  grid.innerHTML = pageItems.length
+  shelterGrid.innerHTML = pageItems.length
     ? pageItems.map(renderShelterCard).join('')
     : '<p class="no-results">No shelters match these filters yet.</p>';
 
-  pagerStatus.textContent = `Page ${currentPage} of ${totalPages}`;
-  pagerPrev.disabled = currentPage === 1;
-  pagerNext.disabled = currentPage === totalPages;
+  if (pagerStatusShelter) pagerStatusShelter.textContent = `Page ${currentShelterPage} of ${totalPages}`;
+  if (pagerPrevShelter) pagerPrevShelter.disabled = currentShelterPage === 1;
+  if (pagerNextShelter) pagerNextShelter.disabled = currentShelterPage === totalPages;
 }
 
-pagerPrev.addEventListener('click', () => { currentPage--; renderPage(); });
-pagerNext.addEventListener('click', () => { currentPage++; renderPage(); });
+if (shelterGrid) {
+  if (pagerPrevShelter) pagerPrevShelter.addEventListener('click', () => { currentShelterPage--; renderShelterPage(); });
+  if (pagerNextShelter) pagerNextShelter.addEventListener('click', () => { currentShelterPage++; renderShelterPage(); });
 
-// Province pills: clicking one re-filters, resets a mismatched city dropdown, and resets to page 1
-provinceGroup.addEventListener('click', (e) => {
-  const pill = e.target.closest('.pill');
-  if (!pill) return;
+  if (provinceGroup) {
+    provinceGroup.addEventListener('click', (e) => {
+      const pill = e.target.closest('.pill');
+      if (!pill) return;
 
-  provinceGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
+      provinceGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
 
-  const cityProvince = cityToProvince[cityDropdown.value];
-  const cityStillValid = cityDropdown.value === 'all' || pill.dataset.filter === 'all' || cityProvince === pill.dataset.filter;
-  
-  if (!cityStillValid) {
-    cityDropdown.value = 'all';
-  }
+      if (cityDropdown) {
+        const cityProvince = cityToProvince[cityDropdown.value];
+        const cityStillValid = cityDropdown.value === 'all' || pill.dataset.filter === 'all' || cityProvince === pill.dataset.filter;
+        
+        if (!cityStillValid) {
+          cityDropdown.value = 'all';
+        }
+      }
 
-  currentPage = 1;
-  renderPage();
-});
-
-// City dropdown: changing it auto-selects the matching province pill and resets to page 1
-cityDropdown.addEventListener('change', () => {
-  if (cityDropdown.value !== 'all') {
-    const province = cityToProvince[cityDropdown.value];
-    provinceGroup.querySelectorAll('.pill').forEach(p => {
-      p.classList.toggle('active', p.dataset.filter === province);
+      currentShelterPage = 1;
+      renderShelterPage();
     });
   }
 
-  currentPage = 1;
-  renderPage();
-});
+  if (cityDropdown) {
+    cityDropdown.addEventListener('change', () => {
+      if (cityDropdown.value !== 'all') {
+        const province = cityToProvince[cityDropdown.value];
+        if (provinceGroup) {
+          provinceGroup.querySelectorAll('.pill').forEach(p => {
+            p.classList.toggle('active', p.dataset.filter === province);
+          });
+        }
+      }
 
-renderPage();
+      currentShelterPage = 1;
+      renderShelterPage();
+    });
+  }
+
+  renderShelterPage();
+}
