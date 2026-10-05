@@ -53,65 +53,68 @@ const pets = [
     new Pet(32, 'Penelope', 'cat', 'Puspin', '2 yrs', 'PAWS Animal Rehabilitation Center')
 ];
 
-/* ---- 2. Card rendering with Hover Details ---- */
+/* ---- 2. Card rendering ---- */
 function renderPetCard(pet) {
-  // Look up shelter details from shelters-list.js if available
-  const shelter = (typeof shelters !== 'undefined') 
-    ? shelters.find(s => s.name.toLowerCase().includes(pet.shelterName.toLowerCase()) || pet.shelterName.toLowerCase().includes(s.name.toLowerCase())) 
-    : null;
-
+  // Safe shelter lookup so the card renders even if shelters array isn't available
   let shelterContact = 'Contact shelter for adoption details';
   let mapLink = '#';
 
-  if (shelter && shelter.contacts) {
-    const c = shelter.contacts;
-    if (c.contactNo !== 'N/A') shelterContact = `Call: ${c.contactNo}`;
-    else if (c.email !== 'N/A') shelterContact = `Email: ${c.email}`;
-    else if (c.socials !== 'N/A') shelterContact = 'Available via Facebook';
-    
-    if (shelter.maps && shelter.maps !== 'N/A') mapLink = shelter.maps;
+  if (typeof shelters !== 'undefined' && Array.isArray(shelters)) {
+    const shelter = shelters.find(s => 
+      s.name.toLowerCase().includes(pet.shelterName.toLowerCase()) || 
+      pet.shelterName.toLowerCase().includes(s.name.toLowerCase())
+    );
+
+    if (shelter && shelter.contacts) {
+      const c = shelter.contacts;
+      if (c.contactNo && c.contactNo !== 'N/A') shelterContact = `Call: ${c.contactNo}`;
+      else if (c.email && c.email !== 'N/A') shelterContact = `Email: ${c.email}`;
+      else if (c.socials && c.socials !== 'N/A') shelterContact = 'Available via Facebook';
+      
+      if (shelter.maps && shelter.maps !== 'N/A') mapLink = shelter.maps;
+    }
   }
 
-    const typeIcon = pet.type === 'dog' ? 'images/icon-dog.png' : 'images/icon-cat.png';
-    const typeLabel = pet.type === 'dog' ? 'Dog' : 'Cat';
+  const typeIcon = pet.type === 'dog' ? 'images/icon-dog.svg' : 'images/icon-cat.svg';
+  const typeLabel = pet.type === 'dog' ? 'Dog' : 'Cat';
 
-    return `
-        <article class="pet-card">
-            <div class="pet-card-image-wrap">
-                <img src="${pet.image}" alt="${pet.name}">
-                <div class="pet-card-hover-overlay">
-                    <span class="pet-badge">
-                        <img src="${typeIcon}" alt="" class="badge-icon" width="14" height="14">
-                        ${typeLabel}
-                    </span>
-                    <div class="hover-details">
-                        <p class="shelter-info"><strong>Shelter:</strong> ${pet.shelterName}</p>
-                        <p class="contact-info">${shelterContact}</p>
-                        ${mapLink !== '#' ? `<a href="${mapLink}" target="_blank" rel="noopener" class="pet-map-link">View Shelter Location →</a>` : ''}
-                    </div>
-                </div>
-            </div>
-            <div class="pet-body">
-                <h3>${pet.name}</h3>
-                <p>${pet.age} · ${pet.breed}</p>
-            </div>
-        </article>
-    `;
+  return `
+    <article class="pet-card">
+      <div class="pet-card-image-wrap">
+        <img src="${pet.image}" alt="${pet.name}">
+        <div class="pet-card-hover-overlay">
+          <span class="pet-badge">
+            <img src="${typeIcon}" alt="" class="badge-icon" width="14" height="14" onerror="this.style.display='none'">
+            ${typeLabel}
+          </span>
+          <div class="hover-details">
+            <p class="shelter-info"><strong>Shelter:</strong> ${pet.shelterName}</p>
+            <p class="contact-info">${shelterContact}</p>
+            ${mapLink !== '#' ? `<a href="${mapLink}" target="_blank" rel="noopener" class="pet-map-link">View Location →</a>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="pet-body">
+        <h3>${pet.name}</h3>
+        <p>${pet.age} · ${pet.breed}</p>
+      </div>
+    </article>
+  `;
 }
 
 /* ---- 3. Filtering + pagination ---- */
-const PAGE_SIZE = 8;
-let currentPage = 1;
+const PETS_PAGE_SIZE = 8; // Renamed to avoid global scope collision with shelters-list.js
+let currentPetPage = 1;
 
-const grid = document.getElementById('pet-grid');
-const filterGroup = document.querySelector('.filter-pills[data-filter-key="type"]');
-const pagerPrev = document.getElementById('pager-prev');
-const pagerNext = document.getElementById('pager-next');
-const pagerStatus = document.getElementById('pager-status');
+const petGrid = document.getElementById('pet-grid');
+const petFilterGroup = document.querySelector('.filter-pills[data-filter-key="type"]');
+const petPagerPrev = document.getElementById('pager-prev');
+const petPagerNext = document.getElementById('pager-next');
+const petPagerStatus = document.getElementById('pager-status');
 
 function getActiveType() {
-  if (!filterGroup) return 'all';
-  const activePill = filterGroup.querySelector('.pill.active');
+  if (!petFilterGroup) return 'all';
+  const activePill = petFilterGroup.querySelector('.pill.active');
   return activePill ? activePill.dataset.filter : 'all';
 }
 
@@ -120,36 +123,36 @@ function getFilteredPets() {
   return pets.filter(p => type === 'all' || p.type === type);
 }
 
-function renderPage() {
-  if (!grid) return;
+function renderPetPage() {
+  if (!petGrid) return;
   const filtered = getFilteredPets();
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  currentPage = Math.min(currentPage, totalPages);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PETS_PAGE_SIZE));
+  currentPetPage = Math.min(currentPetPage, totalPages);
 
-  const start = (currentPage - 1) * PAGE_SIZE;
-  const pageItems = filtered.slice(start, start + PAGE_SIZE);
+  const start = (currentPetPage - 1) * PETS_PAGE_SIZE;
+  const pageItems = filtered.slice(start, start + PETS_PAGE_SIZE);
 
-  grid.innerHTML = pageItems.length
+  petGrid.innerHTML = pageItems.length
     ? pageItems.map(renderPetCard).join('')
     : '<p class="no-results">No pets match this category right now.</p>';
 
-  if (pagerStatus) pagerStatus.textContent = `Page ${currentPage} of ${totalPages}`;
-  if (pagerPrev) pagerPrev.disabled = currentPage === 1;
-  if (pagerNext) pagerNext.disabled = currentPage === totalPages;
+  if (petPagerStatus) petPagerStatus.textContent = `Page ${currentPetPage} of ${totalPages}`;
+  if (petPagerPrev) petPagerPrev.disabled = currentPetPage === 1;
+  if (petPagerNext) petPagerNext.disabled = currentPetPage === totalPages;
 }
 
-if (pagerPrev) pagerPrev.addEventListener('click', () => { currentPage--; renderPage(); });
-if (pagerNext) pagerNext.addEventListener('click', () => { currentPage++; renderPage(); });
+if (petPagerPrev) petPagerPrev.addEventListener('click', () => { currentPetPage--; renderPetPage(); });
+if (petPagerNext) petPagerNext.addEventListener('click', () => { currentPetPage++; renderPetPage(); });
 
-if (filterGroup) {
-  filterGroup.addEventListener('click', (e) => {
+if (petFilterGroup) {
+  petFilterGroup.addEventListener('click', (e) => {
     const pill = e.target.closest('.pill');
     if (!pill) return;
 
-    filterGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
-    currentPage = 1;
-    renderPage();
+    petFilterGroup.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === pill));
+    currentPetPage = 1;
+    renderPetPage();
   });
 }
 
-document.addEventListener('DOMContentLoaded', renderPage);
+document.addEventListener('DOMContentLoaded', renderPetPage);
