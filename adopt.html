@@ -51,12 +51,22 @@
           <p class="eyebrow">Waiting for you</p>
           <h2>Meet our fur(less) babies</h2>
         </div>
-
-        <div class="filter-pills" data-filter-key="type">
-          <button class="pill active" type="button" data-filter="all">All</button>
-          <button class="pill" type="button" data-filter="dog">Dogs</button>
-          <button class="pill" type="button" data-filter="cat">Cats</button>
-        </div>
+        
+            <div class="filter-conrols">
+                <!-- Dog or Cat Filter Pills -->
+                <div class="filter-pills" data-filter-key="type">
+                    <button class="pill active" type="button" data-filter="all">All</button>
+                    <button class="pill" type="button" data-filter="dog">Dogs</button>
+                    <button class="pill" type="button" data-filter="cat">Cats</button>
+                </div>
+                <!-- Searchable Shelter Dropdown Input -->
+                <div class="select-wrapper" filter-dropdown>
+                    <input id="pet-shelter-filter" list="pet-shelters-datalist" placeholder="Select or type shelter..." autocomplete="off">
+                    <datalist id="pet-shelters-datalist">
+                        <option value="All Shelters"></option>
+                    </datalist>
+                </div>
+            </div>
       </div>
 
       <div class="pet-grid" id="pet-grid">
