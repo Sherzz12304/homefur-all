@@ -156,7 +156,7 @@ function renderShelterCard(shelter) {
         <p>${shelter.description}</p>
         <div class="shelter-meta">
           <div class="contact-popover-wrapper">
-            <button class="contact-trigger" type="button">Contact info 🛈</button>
+            <button class="contact-trigger" type="button">Contact info &#128712;</button>
             <div class="contact-popover">
               <ul>
                 ${contactDetails}
