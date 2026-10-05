@@ -293,3 +293,13 @@
 .pet-map-link:hover {
   color: #fff;
 }
+
+.contact-info a {
+  color: var(--butter);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.contact-info a:hover {
+  color: #fff;
+}
