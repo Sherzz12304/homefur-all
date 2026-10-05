@@ -311,7 +311,8 @@
   gap: 0.8rem;
 }
 
-.filter-controls .filter-dropdown {
+.filter-controls .filter-dropdown,
+.filter-controls .select-wrapper {
   margin-bottom: 0;
   width: 280px;
   position: relative;
